@@ -2,6 +2,7 @@ import erotic from 'erotic'
 import Catchment from 'catchment'
 import { createGunzip } from 'zlib'
 import { isMessageGzip } from '.'
+import { IncomingHttpHeaders } from 'http' // eslint-disable-line
 
 /**
  * @param {http} request actual http or https request function
@@ -17,7 +18,7 @@ export const makeRequest = (request, requestOptions, config) => {
 
   /** @type {IncomingHttpHeaders} */
   let h
-  /** @type {{statusMessage: string, statusCode: string}} */
+  /** @type {{statusMessage: string, statusCode: number}} */
   let m
   /** @type {string|Buffer} */
   let b

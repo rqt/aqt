@@ -134,7 +134,7 @@ const T = {
     })
     assert(res.body instanceof Buffer)
     deepEqual(res.body, expected)
-  }
+  },
 }
 
 export default T
