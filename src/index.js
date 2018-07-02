@@ -22,7 +22,7 @@ export const aqt = async (address, config = {}) => {
     data: d,
     type = 'json',
     headers: outgoingHeaders = {
-      'User-Agent': `Mozilla/5.0 (Node.js) rqt/${version}`,
+      'User-Agent': `Mozilla/5.0 (Node.js) aqt/${version}`,
     },
     binary = false,
     method = 'POST',
