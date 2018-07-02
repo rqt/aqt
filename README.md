@@ -49,19 +49,19 @@ The configuration object is the following:
  </tr>
  <tr>
   <td><a name="type"><code>type</code></a></td>
-  <td><em>form|json</em></td>
+  <td><em>'form'|'json'</em></td>
   <td>How to send data: <code>json</code> to serialise JSON data and <code>form</code> for url-encoded transmission with <code>json</code> mode by default.</td>
   <td></td>
  </tr>
  <tr>
   <td><a name="headers"><code>headers</code></a></td>
-  <td><em>undefined</em></td>
+  <td><em>object</em></td>
   <td>Headers to use for the request.</td>
   <td></td>
  </tr>
  <tr>
   <td><a name="method"><code>method</code></a></td>
-  <td><em>undefined</em></td>
+  <td><em>string</em></td>
   <td>What HTTP method to use to send data (only works when <code>data</code> is set). Default <code>POST</code>.</td>
   <td></td>
  </tr>
@@ -99,7 +99,7 @@ import aqt from 'aqt'
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Mon, 02 Jul 2018 16:57:06 GMT",
+    "date": "Mon, 02 Jul 2018 16:58:45 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
