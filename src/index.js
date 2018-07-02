@@ -1,6 +1,5 @@
 import { request as https } from 'https'
 import { request as http  } from 'http'
-
 import { debuglog } from 'util'
 import erotic from 'erotic'
 import { parse } from 'url'
@@ -18,7 +17,7 @@ const LOG = debuglog('aqt')
  * @param {'form'|'json'} [config.type='json'] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default.
  * @param {string} [config.method='POST'] What method to use to send data (only works when `data` is set). Default `POST`.
  */
-export const arqt = async (address, config) => {
+export const aqt = async (address, config = {}) => {
   const {
     data: d,
     type = 'json',
@@ -70,6 +69,7 @@ export const arqt = async (address, config) => {
   }
 }
 
+export default aqt
 
 /**
  * @typedef {Object} Aconfig
