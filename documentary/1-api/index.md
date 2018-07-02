@@ -1,8 +1,8 @@
 
 ## API
 
-### `aqt(): AQT`
+The package exports a main default asynchronous function to make requests.
 
-Call this function to get a result you want.
-
-%EXAMPLE: example/example.js, ../src => aqt, javascript%
+```js
+import aqt from 'aqt'
+```
