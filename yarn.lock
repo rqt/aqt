@@ -78,6 +78,12 @@ eslint-config-artdeco@1.0.0:
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/heap/-/heap-0.2.6.tgz#087e1f10b046932fc8594dd9e6d378afc9d1e5ac"
 
+https-context@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/https-context/-/https-context-1.0.1.tgz#86f7dee357f53a92555fdd96abdb9ceeeb1e20d1"
+  dependencies:
+    catchment "2.0.1"
+
 json-diff@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/json-diff/-/json-diff-0.5.2.tgz#e0bc9e434cd2c4c6354487835e01bf3fed335cda"
