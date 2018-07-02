@@ -9,10 +9,12 @@
     "test-build": "BABEL_ENV=test-build yarn test",
     "test-all": "yarn-s test test-build",
     "test-watch": "yarn test -w",
+    "doc": "doc documentary -o README.md",
     "lint": "eslint .",
     "e": "node example",
     "example/": "yarn e example/example.js",
-    "build": "babel src --out-dir build --source-maps"
+    "b": "b --source-maps",
+    "build": "yarn-s b doc"
   },
   "files": [
     "build"
@@ -31,6 +33,7 @@
   },
   "homepage": "https://github.com/artdecocode/aqt#readme",
   "devDependencies": {
+    "documentary": "1.8.1",
     "eslint-config-artdeco": "1.0.0",
     "https-context": "1.0.1",
     "yarn-s": "1.1.0",
