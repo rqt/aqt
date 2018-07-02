@@ -7,3 +7,7 @@
 ```sh
 yarn add -E aqt
 ```
+
+## Table Of Contents
+
+%TOC%

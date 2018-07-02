@@ -8,6 +8,12 @@
 yarn add -E aqt
 ```
 
+## Table Of Contents
+
+- [Table Of Contents](#table-of-contents)
+- [API](#api)
+  * [`aqt(): AQT`](#aqt-aqt)
+
 ## API
 
 ### `aqt(): AQT`
