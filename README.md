@@ -1,11 +1,11 @@
-# aqt
+# @rqt/aqt
 
-[![npm version](https://badge.fury.io/js/aqt.svg)](https://npmjs.org/package/aqt)
+[![npm version](https://badge.fury.io/js/%40rqt%2Faqt.svg)](https://npmjs.org/package/@rqt/aqt)
 
 `aqt` is an advanced request for Node.js which returns body, headers and status after _gzip_ when necessary.
 
 ```sh
-yarn add -E aqt
+yarn add -E @rqt/aqt
 ```
 
 ## Table Of Contents
@@ -118,7 +118,7 @@ import aqt from 'aqt'
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Tue, 10 Jul 2018 15:04:35 GMT",
+    "date": "Tue, 10 Jul 2018 15:06:49 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
