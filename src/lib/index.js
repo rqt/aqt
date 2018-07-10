@@ -59,8 +59,6 @@ export const exec = async (request, requestOptions, { data, justHeaders, binary,
   return res
 }
 
-
-
 /**
  * @param {IncomingMessage.headers} headers
  */
@@ -68,11 +66,9 @@ const isHeadersJson = (headers) => {
   return headers['content-type'].startsWith('application/json')
 }
 
-
 /**
  * @param {IncomingMessage} req
  */
 export const isMessageGzip = (res) => {
   return res.headers['content-encoding'] == 'gzip'
 }
-

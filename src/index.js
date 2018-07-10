@@ -14,8 +14,10 @@ const LOG = debuglog('aqt')
  * @param {Aconfig} [config] Configuration object
  * @param {object} [config.data] Data to send to the server with the request.
  * @param {object} [config.headers] Headers to use in the request.
+ * @param {boolean} [config.binary=false] Whether to return a buffer instead of a string (default false).
  * @param {'form'|'json'} [config.type='json'] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default.
  * @param {string} [config.method='POST'] What method to use to send data (only works when `data` is set). Default `POST`.
+ * @param {boolean} [config.justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
  */
 export const aqt = async (address, config = {}) => {
   const {
@@ -76,5 +78,7 @@ export default aqt
  * @property {object} [data] Optional data to send to the server with the request.
  * @property {'form'|'json'} [type='json'] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default.
  * @property {object} [headers] Headers to use for the request.
+ * @property {boolean} [binary] Whether to return a buffer instead of a string (default false).
  * @property {string} [method='POST'] What HTTP method to use to send data (only works when `data` is set). Default `POST`.
+ * @property {boolean} [justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
  */

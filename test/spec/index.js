@@ -1,8 +1,8 @@
 import { ok, assert, equal, deepEqual, throws } from 'zoroaster/assert'
+import { HTTPContext } from 'https-context'
 import aqt from '../../src'
 import Context from '../context'
 import { version } from '../../package.json'
-import { HTTPContext } from 'https-context'
 
 /** @type {Object.<string, (h: HTTPContext, c: Context)>} */
 const T = {

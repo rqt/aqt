@@ -11,9 +11,15 @@ The configuration object is the following:
   <d>How to send data: <code>json</code> to serialise JSON data and <code>form</code> for url-encoded transmission with <code>json</code> mode by default.</d>
 </p>
 <p name="headers" type="object">
-  <d>Headers to use for the request.</d>
+  <d>Headers to send along with the request.</d>
+</p>
+<p name="binary" type="boolean">
+  <d>Whether to return a buffer instead of a string. Default <code>false</code>.</d>
 </p>
 <p name="method" type="string">
   <d>What HTTP method to use to send data (only works when <code>data</code> is set). Default <code>POST</code>.</d>
+</p>
+<p name="justHeaders" type="boolean">
+  <d>Whether to stop the request after response headers were received, without waiting for the data. Default <code>false</code>.</d>
 </p>
 %

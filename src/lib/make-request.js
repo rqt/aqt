@@ -1,8 +1,8 @@
 import erotic from 'erotic'
 import Catchment from 'catchment'
 import { createGunzip } from 'zlib'
-import { isMessageGzip } from '.'
 import { IncomingHttpHeaders } from 'http' // eslint-disable-line
+import { isMessageGzip } from '.'
 
 /**
  * @param {http} request actual http or https request function
