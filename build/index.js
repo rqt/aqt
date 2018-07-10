@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.arqt = void 0;
+exports.default = exports.aqt = void 0;
 
 var _https = require("https");
 
@@ -28,16 +28,18 @@ const LOG = (0, _util.debuglog)('aqt');
  * @param {Aconfig} [config] Configuration object
  * @param {object} [config.data] Data to send to the server with the request.
  * @param {object} [config.headers] Headers to use in the request.
+ * @param {boolean} [config.binary=false] Whether to return a buffer instead of a string (default false).
  * @param {'form'|'json'} [config.type='json'] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default.
  * @param {string} [config.method='POST'] What method to use to send data (only works when `data` is set). Default `POST`.
+ * @param {boolean} [config.justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
  */
 
-const arqt = async (address, config) => {
+const aqt = async (address, config = {}) => {
   const {
     data: d,
     type = 'json',
     headers: outgoingHeaders = {
-      'User-Agent': `Mozilla/5.0 (Node.js) rqt/${_package.version}`
+      'User-Agent': `Mozilla/5.0 (Node.js) aqt/${_package.version}`
     },
     binary = false,
     method = 'POST',
@@ -96,14 +98,18 @@ const arqt = async (address, config) => {
     statusMessage
   };
 };
+
+exports.aqt = aqt;
+var _default = aqt;
 /**
  * @typedef {Object} Aconfig
  * @property {object} [data] Optional data to send to the server with the request.
  * @property {'form'|'json'} [type='json'] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default.
  * @property {object} [headers] Headers to use for the request.
+ * @property {boolean} [binary] Whether to return a buffer instead of a string (default false).
  * @property {string} [method='POST'] What HTTP method to use to send data (only works when `data` is set). Default `POST`.
+ * @property {boolean} [justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
  */
 
-
-exports.arqt = arqt;
+exports.default = _default;
 //# sourceMappingURL=index.js.map

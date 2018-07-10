@@ -118,7 +118,7 @@ import aqt from 'aqt'
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Tue, 10 Jul 2018 15:02:58 GMT",
+    "date": "Tue, 10 Jul 2018 15:04:35 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },

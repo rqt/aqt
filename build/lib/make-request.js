@@ -11,9 +11,13 @@ var _catchment = _interopRequireDefault(require("catchment"));
 
 var _zlib = require("zlib");
 
+var _http = require("http");
+
 var _ = require(".");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// eslint-disable-line
 
 /**
  * @param {http} request actual http or https request function
@@ -33,7 +37,7 @@ const makeRequest = (request, requestOptions, config) => {
   /** @type {IncomingHttpHeaders} */
 
   let h;
-  /** @type {{statusMessage: string, statusCode: string}} */
+  /** @type {{statusMessage: string, statusCode: number}} */
 
   let m;
   /** @type {string|Buffer} */
