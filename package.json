@@ -1,5 +1,5 @@
 {
-  "name": "aqt",
+  "name": "@rqt/aqt",
   "version": "1.0.0",
   "description": "Advanced request for Node.js which returns body, headers and status after gzip.",
   "main": "build",
@@ -21,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/artdecocode/aqt.git"
+    "url": "git://github.com/rqt/aqt.git"
   },
   "keywords": [
     "request"
@@ -29,9 +29,9 @@
   "author": "Anton <anton@adc.sh>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/artdecocode/aqt/issues"
+    "url": "https://github.com/rqt/aqt/issues"
   },
-  "homepage": "https://github.com/artdecocode/aqt#readme",
+  "homepage": "https://github.com/rqt/aqt#readme",
   "devDependencies": {
     "documentary": "1.8.2",
     "eslint-config-artdeco": "1.0.0",

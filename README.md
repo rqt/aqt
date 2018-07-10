@@ -31,7 +31,7 @@ yarn add -E @rqt/aqt
 The package exports a main default asynchronous function to make requests.
 
 ```js
-import aqt from 'aqt'
+import aqt from '@rqt/aqt'
 ```
 
 ### `AConfig` Type
@@ -118,7 +118,7 @@ import aqt from 'aqt'
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Tue, 10 Jul 2018 15:06:49 GMT",
+    "date": "Tue, 10 Jul 2018 15:07:52 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
