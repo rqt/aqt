@@ -1,3 +1,9 @@
+## 18 July 2018
+
+### 1.0.1
+
+- [doc] Example row (`documentary@1.10.0) for better readability.
+
 ## 10 July 2018
 
 ### 1.0.0
