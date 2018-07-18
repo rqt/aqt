@@ -1,6 +1,6 @@
 {
   "name": "@rqt/aqt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Advanced request for Node.js which returns body, headers and status after gzip.",
   "main": "build",
   "scripts": {
