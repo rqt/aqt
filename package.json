@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/rqt/aqt#readme",
   "devDependencies": {
-    "documentary": "1.9.0",
+    "documentary": "1.10.0",
     "eslint-config-artdeco": "1.0.1",
     "https-context": "1.0.2",
     "yarn-s": "1.1.0",
