@@ -44,46 +44,39 @@ The configuration object is the following:
    <th>Property</th>
    <th>Type</th>
    <th>Description</th>
-   <th>Example</th>
   </tr>
  </thead>
  <tbody>
-   <tr>
-  <td><a name="data"><code>data</code></a></td>
-  <td><em>object</em></td>
-  <td>Optional data to send to the server with the request.</td>
-  <td></td>
- </tr>
- <tr>
-  <td><a name="type"><code>type</code></a></td>
-  <td><em>'form'|'json'</em></td>
-  <td>How to send data: <code>json</code> to serialise JSON data and <code>form</code> for url-encoded transmission with <code>json</code> mode by default.</td>
-  <td></td>
- </tr>
- <tr>
-  <td><a name="headers"><code>headers</code></a></td>
-  <td><em>object</em></td>
-  <td>Headers to send along with the request.</td>
-  <td></td>
- </tr>
- <tr>
-  <td><a name="binary"><code>binary</code></a></td>
-  <td><em>boolean</em></td>
-  <td>Whether to return a buffer instead of a string. Default <code>false</code>.</td>
-  <td></td>
- </tr>
- <tr>
-  <td><a name="method"><code>method</code></a></td>
-  <td><em>string</em></td>
-  <td>What HTTP method to use to send data (only works when <code>data</code> is set). Default <code>POST</code>.</td>
-  <td></td>
- </tr>
- <tr>
-  <td><a name="justheaders"><code>justHeaders</code></a></td>
-  <td><em>boolean</em></td>
-  <td>Whether to stop the request after response headers were received, without waiting for the data. Default <code>false</code>.</td>
-  <td></td>
- </tr>
+  <tr>
+   <td><a name="data"><code>data</code></a></td>
+   <td><em>object</em></td>
+   <td>Optional data to send to the server with the request.</td>
+  </tr>
+  <tr>
+   <td><a name="type"><code>type</code></a></td>
+   <td><em>'form'|'json'</em></td>
+   <td>How to send data: <code>json</code> to serialise JSON data and <code>form</code> for url-encoded transmission with <code>json</code> mode by default.</td>
+  </tr>
+  <tr>
+   <td><a name="headers"><code>headers</code></a></td>
+   <td><em>object</em></td>
+   <td>Headers to send along with the request.</td>
+  </tr>
+  <tr>
+   <td><a name="binary"><code>binary</code></a></td>
+   <td><em>boolean</em></td>
+   <td>Whether to return a buffer instead of a string. Default <code>false</code>.</td>
+  </tr>
+  <tr>
+   <td><a name="method"><code>method</code></a></td>
+   <td><em>string</em></td>
+   <td>What HTTP method to use to send data (only works when <code>data</code> is set). Default <code>POST</code>.</td>
+  </tr>
+  <tr>
+   <td><a name="justheaders"><code>justHeaders</code></a></td>
+   <td><em>boolean</em></td>
+   <td>Whether to stop the request after response headers were received, without waiting for the data. Default <code>false</code>.</td>
+  </tr>
  </tbody>
 </table>
 
@@ -118,7 +111,7 @@ import aqt from 'aqt'
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Tue, 10 Jul 2018 15:07:52 GMT",
+    "date": "Wed, 18 Jul 2018 01:34:58 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
@@ -141,41 +134,58 @@ The result of the `aqt` function will have the following structure:
   </tr>
  </thead>
  <tbody>
-   <tr>
-  <td><a name="body"><code>body</code></a></td>
-  <td><em>string|object|Buffer</em></td>
-  <td>The return from the server. In case <code>json</code> content-type was set by the server, the response will be parsed into an object. If <code>binary</code> option was for the request, a <code>Buffer</code> will be returned. Otherwise, a string response is returned.</td>
-  <td></td>
- </tr>
- <tr>
-  <td><a name="headers"><code>headers</code></a></td>
-  <td><em>object</em></td>
-  <td>Incoming headers returned by the server.</td>
-  <td>
+  <tr>
+   <td><a name="body"><code>body</code></a></td>
+   <td><em>string|object|Buffer</em></td>
+   <td colspan="2">The return from the server. In case <code>json</code> content-type was set by the server, the response will be parsed into an object. If <code>binary</code> option was for the request, a <code>Buffer</code> will be returned. Otherwise, a string response is returned.</td>
+  </tr>
+  <tr>
+   <td><a name="headers"><code>headers</code></a></td>
+   <td><em>object</em></td>
+   <td colspan="2">Incoming headers returned by the server.</td>
+  </tr>
+  <tr></tr>
+  <tr>
+   <td colspan="4">
 
 ```json
 {
   "server": "GitHub.com",
-  "content-type": "application/json",
+  "date": "Wed, 18 Jul 2018 01:32:47 GMT",
+  "content-type": "application/json; charset=utf-8",
   "content-length": "2",
   "connection": "close",
-  "status": "200 OK"
+  "status": "200 OK",
+  "x-ratelimit-limit": "60",
+  "x-ratelimit-remaining": "59",
+  "x-ratelimit-reset": "1531881167",
+  "cache-control": "public, max-age=60, s-maxage=60",
+  "vary": "Accept",
+  "etag": "\"d751713988987e9331980363e24189ce\"",
+  "x-github-media-type": "github.v3; format=json",
+  "access-control-allow-origin": "*",
+  "x-frame-options": "deny",
+  "x-content-type-options": "nosniff",
+  "x-xss-protection": "1; mode=block",
+  "content-security-policy": "default-src 'none'",
+  "x-runtime-rack": "0.018822",
+  "x-github-request-id": "F187:785E:65A1E8A:C2A36B5:5B4E98BF"
 }
 ```
 </td>
- </tr>
- <tr>
-  <td><a name="statuscode"><code>statusCode</code></a></td>
-  <td><em>number</em></td>
-  <td>The status code returned by the server.</td>
-  <td><code>200</code></td>
- </tr>
- <tr>
-  <td><a name="statusmessage"><code>statusMessage</code></a></td>
-  <td><em>string</em></td>
-  <td>The status message set by the server.</td>
-  <td><code>OK</code></td>
- </tr>
+  </tr>
+  <tr>
+   <td><a name="statuscode"><code>statusCode</code></a></td>
+   <td><em>number</em></td>
+   <td>The status code returned by the server.</td>
+   <td><code>200</code></td>
+  </tr>
+  <tr>
+   <td><a name="statusmessage"><code>statusMessage</code></a></td>
+   <td><em>string</em></td>
+   <td>The status message set by the server.</td>
+   <td><code>OK</code></td>
+  </tr>
  </tbody>
 </table>
 

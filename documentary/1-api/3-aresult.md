@@ -9,15 +9,30 @@ The result of the `aqt` function will have the following structure:
 </p>
 <p name="headers" type="object">
   <d>Incoming headers returned by the server.</d>
-  <e>
+  <e row>
 
 ```json
 {
   "server": "GitHub.com",
-  "content-type": "application/json",
+  "date": "Wed, 18 Jul 2018 01:32:47 GMT",
+  "content-type": "application/json; charset=utf-8",
   "content-length": "2",
   "connection": "close",
-  "status": "200 OK"
+  "status": "200 OK",
+  "x-ratelimit-limit": "60",
+  "x-ratelimit-remaining": "59",
+  "x-ratelimit-reset": "1531881167",
+  "cache-control": "public, max-age=60, s-maxage=60",
+  "vary": "Accept",
+  "etag": "\"d751713988987e9331980363e24189ce\"",
+  "x-github-media-type": "github.v3; format=json",
+  "access-control-allow-origin": "*",
+  "x-frame-options": "deny",
+  "x-content-type-options": "nosniff",
+  "x-xss-protection": "1; mode=block",
+  "content-security-policy": "default-src 'none'",
+  "x-runtime-rack": "0.018822",
+  "x-github-request-id": "F187:785E:65A1E8A:C2A36B5:5B4E98BF"
 }
 ```
 </e>
