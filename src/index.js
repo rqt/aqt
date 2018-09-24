@@ -54,7 +54,10 @@ const aqt = async (address, config = {}) => {
     options.headers['Content-Length'] = Buffer.byteLength(data)
   }
 
-  const { body, headers, byteLength, statusCode, statusMessage, rawLength, parsedBody } = await exec(request, options, {
+  const {
+    body, headers, byteLength, statusCode, statusMessage, rawLength,
+    parsedBody,
+  } = await exec(request, options, {
     data,
     justHeaders,
     binary,

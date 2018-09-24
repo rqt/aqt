@@ -1,8 +1,13 @@
 import erotic from 'erotic'
 import Catchment from 'catchment'
 import { createGunzip } from 'zlib'
-import { IncomingHttpHeaders } from 'http' // eslint-disable-line
-import { isMessageGzip } from '.'
+
+/**
+ * @param {import('http').IncomingMessage} req
+ */
+export const isMessageGzip = (res) => {
+  return res.headers['content-encoding'] == 'gzip'
+}
 
 /**
  * @param {http} request actual http or https request function
@@ -16,7 +21,7 @@ export const makeRequest = (request, requestOptions, config) => {
   const { justHeaders, binary, er = erotic(true) } = config
   let req
 
-  /** @type {IncomingHttpHeaders} */
+  /** @type {import('http').IncomingHttpHeaders} */
   let h
   /** @type {{statusMessage: string, statusCode: number}} */
   let m

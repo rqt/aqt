@@ -29,7 +29,9 @@ export const getData = (type, data) => {
   }
 }
 
-export const exec = async (request, requestOptions, { data, justHeaders, binary, er = erotic(true) }) => {
+export const exec = async (request, requestOptions,
+  { data, justHeaders, binary, er = erotic(true) },
+) => {
   const { req, promise } = makeRequest(request, requestOptions, {
     justHeaders,
     binary,
@@ -64,11 +66,4 @@ export const exec = async (request, requestOptions, { data, justHeaders, binary,
  */
 const isHeadersJson = (headers) => {
   return headers['content-type'].startsWith('application/json')
-}
-
-/**
- * @param {IncomingMessage} req
- */
-export const isMessageGzip = (res) => {
-  return res.headers['content-encoding'] == 'gzip'
 }

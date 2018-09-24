@@ -12,106 +12,56 @@ yarn add -E @rqt/aqt
 
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
-  * [`AConfig` Type](#aconfig-type)
-    * [<code>data</code>](#data)
-    * [<code>type</code>](#type)
-    * [<code>headers</code>](#headers)
-    * [<code>binary</code>](#binary)
-    * [<code>method</code>](#method)
-    * [<code>justHeaders</code>](#justheaders)
-  * [`aqt(url: string, config?: AConfig): AResult`](#aqturl-stringconfig-aconfig-aresult)
-  * [`AResult` Type](#aresult-type)
-    * [<code>body</code>](#body)
-    * [<code>headers</code>](#headers)
-    * [<code>statusCode</code>](#statuscode)
-    * [<code>statusMessage</code>](#statusmessage)
+- [`aqt(url: string, config?: Config): Result`](#aqturl-stringconfig-config-result)
+  * [`Config`](#config)
+- [`Result` Type](#result-type)
+  * [<code>body</code>](#body)
+  * [<code>headers</code>](#headers)
+  * [<code>statusCode</code>](#statuscode)
+  * [<code>statusMessage</code>](#statusmessage)
+- [Copyright](#copyright)
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/0.svg?sanitize=true"></a></p>
 
 ## API
 
-The package exports a main default asynchronous function to make requests.
+The package exports the main default asynchronous function to make requests.
 
 ```js
 import aqt from '@rqt/aqt'
 ```
 
-### `AConfig` Type
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg?sanitize=true"></a></p>
 
-The configuration object is the following:
+## `aqt(`<br/>&nbsp;&nbsp;`url: string,`<br/>&nbsp;&nbsp;`config?: Config,`<br/>`): Result`
 
-<table>
- <thead>
-  <tr>
-   <th>Property</th>
-   <th>Type</th>
-   <th>Description</th>
-  </tr>
- </thead>
- <tbody>
-  <tr>
-   <td><a name="data"><code>data</code></a></td>
-   <td><em>object</em></td>
-   <td>Optional data to send to the server with the request.</td>
-  </tr>
-  <tr>
-   <td><a name="type"><code>type</code></a></td>
-   <td><em>'form'|'json'</em></td>
-   <td>How to send data: <code>json</code> to serialise JSON data and <code>form</code> for url-encoded transmission with <code>json</code> mode by default.</td>
-  </tr>
-  <tr>
-   <td><a name="headers"><code>headers</code></a></td>
-   <td><em>object</em></td>
-   <td>Headers to send along with the request.</td>
-  </tr>
-  <tr>
-   <td><a name="binary"><code>binary</code></a></td>
-   <td><em>boolean</em></td>
-   <td>Whether to return a buffer instead of a string. Default <code>false</code>.</td>
-  </tr>
-  <tr>
-   <td><a name="method"><code>method</code></a></td>
-   <td><em>string</em></td>
-   <td>What HTTP method to use to send data (only works when <code>data</code> is set). Default <code>POST</code>.</td>
-  </tr>
-  <tr>
-   <td><a name="justheaders"><code>justHeaders</code></a></td>
-   <td><em>boolean</em></td>
-   <td>Whether to stop the request after response headers were received, without waiting for the data. Default <code>false</code>.</td>
-  </tr>
- </tbody>
-</table>
+Makes a request to the URL, either with or without options.
 
+__<a name="config">`Config`</a>__: Configuration for requests.
 
-### `aqt(`<br/>&nbsp;&nbsp;`url: string,`<br/>&nbsp;&nbsp;`config?: AConfig,`<br/>`): AResult`
-
-The requests are made with the `aqt` function, which accepts either a single URL, or a URL with a configuration object of the ][`AConfig` type](#aconfig-type).
-
-```javascript
-import { HTTPContext } from 'https-context'
+|    Name     |              Type               |                                                     Description                                                      | Default  |
+| ----------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------- |
+| __data*__   | _Object_                        | Optional data to send to the server with the request.                                                                | -        |
+| data        | _'form'\|'json'_                | How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. | `'json'` |
+| headers     | _Object.&lt;string, string&gt;_ | Headers to use for the request.                                                                                      | -        |
+| headers     | _string_                        | What HTTP method to use to send data.                                                                                | `POST`   |
+| binary      | _boolean_                       | Whether to return a buffer instead of a string.                                                                      | `false`  |
+| justHeaders | _boolean_                       | Whether to stop the request after response headers were received, without waiting for the data.                      | `false`  |
+```js
 import aqt from 'aqt'
 
-(async () => {
-  let c
-  try {
-    c = new HTTPContext()
-    await c._init()
-    c.setResponse('Hello World')
-    const res = await aqt(c.url)
-    const i = JSON.stringify(res, null, 2)
-    process.stdout.write(`${i}\n`)
-  } catch (err) {
-    process.stderr.write(`${err.message}\n`)
-  } finally {
-    await c._destroy()
-  }
-})()
+const Request = async (url) => {
+  const res = await aqt(url)
+  const resp = JSON.stringify(res, null, 2)
+  console.log(resp)
+}
 ```
-
 ```json
 {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Wed, 18 Jul 2018 01:34:58 GMT",
+    "date": "Mon, 24 Sep 2018 13:41:19 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
@@ -120,7 +70,9 @@ import aqt from 'aqt'
 }
 ```
 
-### `AResult` Type
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true"></a></p>
+
+## `Result` Type
 
 The result of the `aqt` function will have the following structure:
 
@@ -190,8 +142,10 @@ The result of the `aqt` function will have the following structure:
 </table>
 
 
----
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/3.svg?sanitize=true"></a></p>
 
-(c) [Art Deco][1] 2018
+## Copyright
 
-[1]: https://artdeco.bz
+(c) [Rqt][1] 2018
+
+[1]: https://rqt.biz
