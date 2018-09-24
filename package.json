@@ -23,7 +23,13 @@
     "url": "git://github.com/rqt/aqt.git"
   },
   "keywords": [
-    "request"
+    "request",
+    "http",
+    "https",
+    "headers",
+    "body",
+    "json",
+    "gzip"
   ],
   "author": "Anton <anton@adc.sh>",
   "license": "MIT",
