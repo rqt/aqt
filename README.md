@@ -63,7 +63,7 @@ const Request = async (url) => {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Mon, 24 Sep 2018 13:48:50 GMT",
+    "date": "Mon, 24 Sep 2018 14:16:52 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
@@ -102,6 +102,9 @@ The result of the `aqt` function will have the following structure:
   <tr>
    <td colspan="4">
 
+<details>
+<summary><code>headers</code> example</summary>
+
 ```json
 {
   "server": "GitHub.com",
@@ -126,6 +129,7 @@ The result of the `aqt` function will have the following structure:
   "x-github-request-id": "F187:785E:65A1E8A:C2A36B5:5B4E98BF"
 }
 ```
+</details>
 </td>
   </tr>
   <tr>

@@ -10,6 +10,9 @@ The result of the `aqt` function will have the following structure:
   <d>Incoming headers returned by the server.</d>
   <e row>
 
+<details>
+<summary><code>headers</code> example</summary>
+
 ```json
 {
   "server": "GitHub.com",
@@ -34,6 +37,7 @@ The result of the `aqt` function will have the following structure:
   "x-github-request-id": "F187:785E:65A1E8A:C2A36B5:5B4E98BF"
 }
 ```
+</details>
 </e>
 </p>
 <p name="statusCode" type="number">
