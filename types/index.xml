@@ -1,0 +1,22 @@
+<types>
+  <type name="Config" desc="Configuration for requests.">
+    <prop type="Object" name="data">
+      Optional data to send to the server with the request.
+    </prop>
+    <prop name="data" type="'form'|'json'" default="'json'">
+      How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default.
+    </prop>
+    <prop opt type="Object.<string, string>" name="headers">
+      Headers to use for the request.
+    </prop>
+    <prop opt string name="headers" default="POST">
+      What HTTP method to use to send data.
+    </prop>
+    <prop boolean name="binary" default="false">
+      Whether to return a buffer instead of a string.
+    </prop>
+    <prop boolean name="justHeaders" default="false">
+      Whether to stop the request after response headers were received, without waiting for the data.
+    </prop>
+  </type>
+</types>

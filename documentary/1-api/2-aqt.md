@@ -1,13 +1,16 @@
-
-```### aqt => AResult
+```## aqt => Result
 [
   ["url", "string"],
-  ["config?", "AConfig"]
+  ["config?", "Config"]
 ]
 ```
 
-The requests are made with the `aqt` function, which accepts either a single URL, or a URL with a configuration object of the ][`AConfig` type](#aconfig-type).
+Makes a request to the URL, either with or without options.
 
-%EXAMPLE: example/example.js, ../src => aqt, javascript%
+%TYPEDEF types/index.xml%
+<!-- The requests are made with the `aqt` function, which accepts either a single URL, or a URL with a configuration object of the ][`AConfig` type](#aconfig-type). -->
 
+%EXAMPLE: example/example.js, ../src => aqt%
 %FORK-json example example/example.js%
+
+%~%

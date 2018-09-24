@@ -1,5 +1,4 @@
-
-### `AResult` Type
+## `Result` Type
 
 The result of the `aqt` function will have the following structure:
 
@@ -46,3 +45,5 @@ The result of the `aqt` function will have the following structure:
   <e><code>OK</code></e>
 </p>
 %
+
+%~%

@@ -9,17 +9,17 @@ import { getData, exec } from './lib'
 const LOG = debuglog('aqt')
 
 /**
- * Advanced Request - request a web page and return information including `headers`, `statusCode`, `statusMessage` along with the `body` (which is also parsed if JSON received).
- * @param {string} address Url such as http://example.com/api
- * @param {Aconfig} [config] Configuration object
- * @param {object} [config.data] Data to send to the server with the request.
- * @param {object} [config.headers] Headers to use in the request.
- * @param {boolean} [config.binary=false] Whether to return a buffer instead of a string (default false).
- * @param {'form'|'json'} [config.type='json'] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default.
- * @param {string} [config.method='POST'] What method to use to send data (only works when `data` is set). Default `POST`.
+ * Request a web page and return information including `headers`, `statusCode`, `statusMessage` along with the `body` (which is also parsed if JSON received).
+ * @param {string} address The URL such as http://example.com/api.
+ * @param {Config} [config] Configuration for requests.
+ * @param {Object} config.data Optional data to send to the server with the request.
+ * @param {'form'|'json'} [config.data="'json'"] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. Default `'json'`.
+ * @param {Object.<string, string>} [config.headers] Headers to use for the request.
+ * @param {string} [config.headers="POST"] What HTTP method to use to send data. Default `POST`.
+ * @param {boolean} [config.binary=false] Whether to return a buffer instead of a string. Default `false`.
  * @param {boolean} [config.justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
  */
-export const aqt = async (address, config = {}) => {
+const aqt = async (address, config = {}) => {
   const {
     data: d,
     type = 'json',
@@ -73,12 +73,13 @@ export const aqt = async (address, config = {}) => {
 
 export default aqt
 
+/* documentary types/index.xml */
 /**
- * @typedef {Object} Aconfig
- * @property {object} [data] Optional data to send to the server with the request.
- * @property {'form'|'json'} [type='json'] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default.
- * @property {object} [headers] Headers to use for the request.
- * @property {boolean} [binary] Whether to return a buffer instead of a string (default false).
- * @property {string} [method='POST'] What HTTP method to use to send data (only works when `data` is set). Default `POST`.
- * @property {boolean} [justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
+ * @typedef {Object} Config Configuration for requests.
+ * @prop {Object} data Optional data to send to the server with the request.
+ * @prop {'form'|'json'} [data="'json'"] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. Default `'json'`.
+ * @prop {Object.<string, string>} [headers] Headers to use for the request.
+ * @prop {string} [headers="POST"] What HTTP method to use to send data. Default `POST`.
+ * @prop {boolean} [binary=false] Whether to return a buffer instead of a string. Default `false`.
+ * @prop {boolean} [justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
  */

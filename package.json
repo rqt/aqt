@@ -9,11 +9,12 @@
     "test-build": "BABEL_ENV=test-build yarn test",
     "test-all": "yarn-s test test-build",
     "test-watch": "yarn test -w",
-    "doc": "doc documentary -o README.md",
+    "doc": "NODE_DEBUG=doc doc documentary -o README.md",
+    "d": "NODE_DEBUG=doc doc src/index.js -g",
     "lint": "eslint .",
     "e": "node example",
     "example/": "yarn e example/example.js",
-    "b": "b --source-maps",
+    "b": "alamode src -o build",
     "build": "yarn-s b doc"
   },
   "files": [
@@ -33,10 +34,10 @@
   },
   "homepage": "https://github.com/rqt/aqt#readme",
   "devDependencies": {
-    "documentary": "1.10.0",
+    "documentary": "1.19.0",
     "eslint-config-artdeco": "1.0.1",
-    "https-context": "1.0.2",
+    "https-context": "1.0.3",
     "yarn-s": "1.1.0",
-    "zoroaster": "2.1.0"
+    "zoroaster": "3.5.1"
   }
 }
