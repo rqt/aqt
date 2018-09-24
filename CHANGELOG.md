@@ -1,3 +1,10 @@
+## 24 September 2018
+
+### 1.0.2
+
+- [doc] Use `types` for JSDoc and README.
+- [build] Build w/ [`alamode`](https://alamode.cc).
+
 ## 18 July 2018
 
 ### 1.0.1
