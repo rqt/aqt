@@ -1,5 +1,5 @@
 import { request as https } from 'https'
-import { request as http  } from 'http'
+import { request as http } from 'http'
 import { debuglog } from 'util'
 import erotic from 'erotic'
 import { parse } from 'url'
@@ -13,8 +13,8 @@ const LOG = debuglog('aqt')
  * @param {string} address The URL such as http://example.com/api.
  * @param {Config} [config] Configuration for requests.
  * @param {Object} config.data Optional data to send to the server with the request.
- * @param {'form'|'json'} [config.data="'json'"] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. Default `'json'`.
- * @param {Object.<string, string>} [config.headers] Headers to use for the request.
+ * @param {'form'|'json'} [config.type="'json'"] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. Default `'json'`.
+ * @param {OutgoingHttpHeaders} [config.headers] Headers to use for the request.
  * @param {string} [config.headers="POST"] What HTTP method to use to send data. Default `POST`.
  * @param {boolean} [config.binary=false] Whether to return a buffer instead of a string. Default `false`.
  * @param {boolean} [config.justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
@@ -78,10 +78,12 @@ export default aqt
 
 /* documentary types/index.xml */
 /**
+ * @typedef {import('http').OutgoingHttpHeaders} OutgoingHttpHeaders
+ *
  * @typedef {Object} Config Configuration for requests.
  * @prop {Object} data Optional data to send to the server with the request.
- * @prop {'form'|'json'} [data="'json'"] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. Default `'json'`.
- * @prop {Object.<string, string>} [headers] Headers to use for the request.
+ * @prop {'form'|'json'} [type="'json'"] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. Default `'json'`.
+ * @prop {OutgoingHttpHeaders} [headers] Headers to use for the request.
  * @prop {string} [headers="POST"] What HTTP method to use to send data. Default `POST`.
  * @prop {boolean} [binary=false] Whether to return a buffer instead of a string. Default `false`.
  * @prop {boolean} [justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.

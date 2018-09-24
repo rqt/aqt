@@ -37,16 +37,18 @@ import aqt from '@rqt/aqt'
 
 Makes a request to the URL, either with or without options.
 
+`import('http').OutgoingHttpHeaders` __<a name="outgoinghttpheaders">`OutgoingHttpHeaders`</a>__
+
 __<a name="config">`Config`</a>__: Configuration for requests.
 
-|    Name     |              Type               |                                                     Description                                                      | Default  |
-| ----------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------- |
-| __data*__   | _Object_                        | Optional data to send to the server with the request.                                                                | -        |
-| data        | _'form'\|'json'_                | How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. | `'json'` |
-| headers     | _Object.&lt;string, string&gt;_ | Headers to use for the request.                                                                                      | -        |
-| headers     | _string_                        | What HTTP method to use to send data.                                                                                | `POST`   |
-| binary      | _boolean_                       | Whether to return a buffer instead of a string.                                                                      | `false`  |
-| justHeaders | _boolean_                       | Whether to stop the request after response headers were received, without waiting for the data.                      | `false`  |
+|    Name     |                     Type                      |                                                     Description                                                      | Default  |
+| ----------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------- |
+| __data*__   | _Object_                                      | Optional data to send to the server with the request.                                                                | -        |
+| type        | _'form'\|'json'_                              | How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. | `'json'` |
+| headers     | _[OutgoingHttpHeaders](#outgoinghttpheaders)_ | Headers to use for the request.                                                                                      | -        |
+| headers     | _string_                                      | What HTTP method to use to send data.                                                                                | `POST`   |
+| binary      | _boolean_                                     | Whether to return a buffer instead of a string.                                                                      | `false`  |
+| justHeaders | _boolean_                                     | Whether to stop the request after response headers were received, without waiting for the data.                      | `false`  |
 ```js
 import aqt from 'aqt'
 
@@ -56,12 +58,12 @@ const Request = async (url) => {
   console.log(resp)
 }
 ```
-```json
+```json5
 {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Mon, 24 Sep 2018 13:41:19 GMT",
+    "date": "Mon, 24 Sep 2018 13:48:50 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
