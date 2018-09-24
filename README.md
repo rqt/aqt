@@ -50,7 +50,7 @@ __<a name="config">`Config`</a>__: Configuration for requests.
 | binary      | _boolean_                                     | Whether to return a buffer instead of a string.                                                                      | `false`  |
 | justHeaders | _boolean_                                     | Whether to stop the request after response headers were received, without waiting for the data.                      | `false`  |
 ```js
-import aqt from 'aqt'
+import aqt from '@rqt/aqt'
 
 const Request = async (url) => {
   const res = await aqt(url)
@@ -63,7 +63,7 @@ const Request = async (url) => {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Mon, 24 Sep 2018 14:16:52 GMT",
+    "date": "Mon, 24 Sep 2018 14:25:17 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
