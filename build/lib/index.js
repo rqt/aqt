@@ -1,5 +1,5 @@
 let erotic = require('erotic'); if (erotic && erotic.__esModule) erotic = erotic.default;
-const { makeRequest } = require('./make-request');
+let makeRequest = require('./make-request'); if (makeRequest && makeRequest.__esModule) makeRequest = makeRequest.default;
 
        const getFormData = (form = {}) => {
   const urlEncodedDataPairs = Object.keys(form).reduce((acc, key) => {
@@ -37,13 +37,7 @@ const { makeRequest } = require('./make-request');
     binary,
     er,
   })
-  if (data) {
-    req.write(data, () => {
-      req.end()
-    })
-  } else {
-    req.end()
-  }
+  req.end(data)
   const res = await promise
 
   const isJson = isHeadersJson(res.headers)

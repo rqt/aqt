@@ -1,5 +1,5 @@
 let erotic = require('erotic'); if (erotic && erotic.__esModule) erotic = erotic.default;
-let Catchment = require('catchment'); if (Catchment && Catchment.__esModule) Catchment = Catchment.default;
+const { collect } = require('catchment');
 const { createGunzip } = require('zlib');
 
 /**
@@ -10,32 +10,33 @@ const { createGunzip } = require('zlib');
 }
 
 /**
- * @param {http} request actual http or https request function
- * @param {RequestOptions} requestOptions
+ * @param {typeof import('http').request} request The actual http or https request function.
+ * @param {import('http').RequestOptions} requestOptions
  * @param {object} config Config object.
  * @param {boolean} [config.justHeaders] only return headers as soon as available. false
  * @param {boolean} [config.binary] return binary
  * @param {boolean} [config.er] erotic callback
  */
-       const makeRequest = (request, requestOptions, config) => {
+const makeRequest = (request, requestOptions, config = {}) => {
   const { justHeaders, binary, er = erotic(true) } = config
+  /** @type {import('http').ClientRequest} */
   let req
 
   /** @type {import('http').IncomingHttpHeaders} */
-  let h
+  let headers
   /** @type {{statusMessage: string, statusCode: number}} */
   let m
   /** @type {string|Buffer} */
-  let b
+  let body
   /** @type {number} */
-  let rl = 0
+  let rawLength = 0
   /** @type {number} */
-  let bl = 0
+  let byteLength = 0
 
   const promise = new Promise((r, j) => {
     req = request(requestOptions, async (res) => {
-      const { headers, statusMessage, statusCode } = res
-      h = headers
+      ({ headers } = res)
+      const { statusMessage, statusCode } = res
       m = { statusMessage, statusCode }
       if (justHeaders) {
         res.destroy()
@@ -44,18 +45,14 @@ const { createGunzip } = require('zlib');
       }
       const isGzip = isMessageGzip(res)
 
-      res.on('data', data => rl += data.byteLength )
+      res.on('data', data => rawLength += data.byteLength )
 
       const rs = isGzip
         ? res.pipe(createGunzip())
         : res
 
-
-      const { promise: p } = new Catchment({ rs, binary })
-      let body = await p
-
-      b = body
-      bl = body.length
+      body = await collect(rs, { binary })
+      byteLength = body.length
 
       r()
     })
@@ -65,11 +62,11 @@ const { createGunzip } = require('zlib');
       })
   }).then(() => {
     const r = {
-      body: b,
-      headers: h,
+      body,
+      headers,
       ...m,
-      rawLength: rl,
-      byteLength: bl,
+      rawLength,
+      byteLength,
       parsedBody: null,
     }
     return r
@@ -77,6 +74,7 @@ const { createGunzip } = require('zlib');
   return { req, promise }
 }
 
+module.exports=makeRequest
+
 module.exports.isMessageGzip = isMessageGzip
-module.exports.makeRequest = makeRequest
 //# sourceMappingURL=make-request.js.map
