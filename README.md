@@ -13,7 +13,7 @@ yarn add -E @rqt/aqt
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
 - [`aqt(url: string, config?: Config): Result`](#aqturl-stringconfig-config-result)
-  * [`Config`](#config)
+  * [`Config`](#type-config)
 - [`Result` Type](#result-type)
   * [<code>body</code>](#body)
   * [<code>headers</code>](#headers)
@@ -37,18 +37,19 @@ import aqt from '@rqt/aqt'
 
 Makes a request to the URL, either with or without options.
 
-`import('http').OutgoingHttpHeaders` __<a name="outgoinghttpheaders">`OutgoingHttpHeaders`</a>__
+`import('http').OutgoingHttpHeaders` __<a name="type-outgoinghttpheaders">`OutgoingHttpHeaders`</a>__
 
-__<a name="config">`Config`</a>__: Configuration for requests.
+__<a name="type-config">`Config`</a>__: Configuration for requests.
 
-|    Name     |                     Type                      |                                                     Description                                                      | Default  |
-| ----------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------- |
-| __data*__   | _Object_                                      | Optional data to send to the server with the request.                                                                | -        |
-| type        | _'form'\|'json'_                              | How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. | `'json'` |
-| headers     | _[OutgoingHttpHeaders](#outgoinghttpheaders)_ | Headers to use for the request.                                                                                      | -        |
-| headers     | _string_                                      | What HTTP method to use to send data.                                                                                | `POST`   |
-| binary      | _boolean_                                     | Whether to return a buffer instead of a string.                                                                      | `false`  |
-| justHeaders | _boolean_                                     | Whether to stop the request after response headers were received, without waiting for the data.                      | `false`  |
+|    Name     |                        Type                        |                                                           Description                                                           | Default  |
+| ----------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| __data*__   | _Object_                                           | Optional data to send to the server with the request.                                                                           | -        |
+| type        | _'form'\|'json'_                                   | How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default.            | `'json'` |
+| headers     | _[OutgoingHttpHeaders](#type-outgoinghttpheaders)_ | Headers to use for the request.                                                                                                 | -        |
+| compress    | _boolean_                                          | Add the `Accept-Encoding: gzip, deflate` header automatically to indicate to the server that it can send a compressed response. | `true`   |
+| headers     | _string_                                           | What HTTP method to use to send data.                                                                                           | `POST`   |
+| binary      | _boolean_                                          | Whether to return a buffer instead of a string.                                                                                 | `false`  |
+| justHeaders | _boolean_                                          | Whether to stop the request after response headers were received, without waiting for the data.                                 | `false`  |
 ```js
 import aqt from '@rqt/aqt'
 
@@ -63,7 +64,7 @@ const Request = async (url) => {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Mon, 24 Sep 2018 14:25:17 GMT",
+    "date": "Tue, 25 Sep 2018 10:35:24 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
