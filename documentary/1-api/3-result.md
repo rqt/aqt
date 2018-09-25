@@ -4,7 +4,7 @@ The result of the `aqt` function will have the following structure:
 
 %TYPE true
 <p name="body" type="string|object|Buffer">
-  <d>The return from the server. In case <code>json</code> content-type was set by the server, the response will be parsed into an object. If <code>binary</code> option was for the request, a <code>Buffer</code> will be returned. Otherwise, a string response is returned.</d>
+  <d>The return from the server. In case <code>json</code> content-type was set by the server, the response will be parsed into an object. If <code>binary</code> option was used for the request, a <code>Buffer</code> will be returned. Otherwise, a string response is returned.</d>
 </p>
 <p name="headers" type="object">
   <d>Incoming headers returned by the server.</d>
@@ -13,7 +13,7 @@ The result of the `aqt` function will have the following structure:
 <details>
 <summary><code>headers</code> example</summary>
 
-```json
+```json5
 {
   "server": "GitHub.com",
   "date": "Wed, 18 Jul 2018 01:32:47 GMT",

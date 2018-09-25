@@ -2,7 +2,7 @@
   <import name="IncomingHttpHeaders" from="http" />
   <type name="Return">
     <prop name="body" type="string|object|Buffer">
-      The return from the server. In case the `json` content-type was set by the server, the response will be parsed into an object. If `binary` option was for the request, a `Buffer` will be returned. Otherwise, a string response is returned.
+      The return from the server. In case the `json` content-type was set by the server, the response will be parsed into an object. If `binary` option was used for the request, a `Buffer` will be returned. Otherwise, a string response is returned.
     </prop>
     <prop name="headers" type="object">
       Incoming headers returned by the server.

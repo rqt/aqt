@@ -64,7 +64,7 @@ const Request = async (url) => {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Tue, 25 Sep 2018 10:35:24 GMT",
+    "date": "Tue, 25 Sep 2018 10:39:07 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
@@ -92,7 +92,7 @@ The result of the `aqt` function will have the following structure:
   <tr>
    <td><a name="body"><code>body</code></a></td>
    <td><em>string|object|Buffer</em></td>
-   <td colspan="2">The return from the server. In case <code>json</code> content-type was set by the server, the response will be parsed into an object. If <code>binary</code> option was for the request, a <code>Buffer</code> will be returned. Otherwise, a string response is returned.</td>
+   <td colspan="2">The return from the server. In case <code>json</code> content-type was set by the server, the response will be parsed into an object. If <code>binary</code> option was used for the request, a <code>Buffer</code> will be returned. Otherwise, a string response is returned.</td>
   </tr>
   <tr>
    <td><a name="headers"><code>headers</code></a></td>
@@ -106,7 +106,7 @@ The result of the `aqt` function will have the following structure:
 <details>
 <summary><code>headers</code> example</summary>
 
-```json
+```json5
 {
   "server": "GitHub.com",
   "date": "Wed, 18 Jul 2018 01:32:47 GMT",
