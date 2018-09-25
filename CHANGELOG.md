@@ -1,3 +1,9 @@
+## 25 September 2018
+
+### 1.1.0
+
+- [feature] Add compression property to config.
+
 ## 24 September 2018
 
 ### 1.0.2
