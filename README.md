@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/%40rqt%2Faqt.svg)](https://npmjs.org/package/@rqt/aqt)
 
-`aqt` is an advanced request for Node.js which returns body, headers and status after _gzip_ when necessary.
+`aqt` is a network request package for Node.js which returns the body (parsed if returned as _JSON_), headers and status after _gzip_ decompression when necessary.
 
 ```sh
 yarn add -E @rqt/aqt
@@ -64,7 +64,7 @@ const Request = async (url) => {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Tue, 25 Sep 2018 10:39:07 GMT",
+    "date": "Tue, 25 Sep 2018 10:41:13 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },

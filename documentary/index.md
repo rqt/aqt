@@ -2,7 +2,7 @@
 
 %NPM: @rqt/aqt%
 
-`aqt` is an advanced request for Node.js which returns body, headers and status after _gzip_ when necessary.
+`aqt` is a network request package for Node.js that returns the body (parsed if returned as _JSON_), headers and status after _gzip_ decompression when necessary.
 
 ```sh
 yarn add -E @rqt/aqt

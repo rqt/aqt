@@ -1,7 +1,7 @@
 {
   "name": "@rqt/aqt",
   "version": "1.0.2",
-  "description": "Advanced request for Node.js which returns body, headers and status after gzip.",
+  "description": "An Advanced Network Request Package That Returns Body (Parsed As JSON If Needed), Headers And Status After Gzip Decompression.",
   "main": "build",
   "scripts": {
     "t": "zoroaster -a",
@@ -24,6 +24,7 @@
   },
   "keywords": [
     "request",
+    "network",
     "http",
     "https",
     "headers",
