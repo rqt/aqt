@@ -15,6 +15,7 @@ const LOG = debuglog('aqt')
  * @param {Object} config.data Optional data to send to the server with the request.
  * @param {'form'|'json'} [config.type="'json'"] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. Default `'json'`.
  * @param {OutgoingHttpHeaders} [config.headers] Headers to use for the request.
+ * @param {boolean} [config.compress=true] Add the `Accept-Encoding: gzip, deflate` header automatically to indicate to the server that it can send a compressed response. Default `true`.
  * @param {string} [config.headers="POST"] What HTTP method to use to send data. Default `POST`.
  * @param {boolean} [config.binary=false] Whether to return a buffer instead of a string. Default `false`.
  * @param {boolean} [config.justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
@@ -26,6 +27,7 @@ const aqt = async (address, config = {}) => {
     headers: outgoingHeaders = {
       'User-Agent': `Mozilla/5.0 (Node.js) aqt/${version}`,
     },
+    compress = true,
     binary = false,
     method = 'POST',
     justHeaders = false,
@@ -40,7 +42,9 @@ const aqt = async (address, config = {}) => {
     hostname,
     port,
     path,
-    headers: outgoingHeaders,
+    headers: {
+      ...outgoingHeaders,
+    },
   }
 
   let data
@@ -52,6 +56,9 @@ const aqt = async (address, config = {}) => {
     options.method = method
     options.headers['Content-Type'] = contentType
     options.headers['Content-Length'] = Buffer.byteLength(data)
+  }
+  if (compress) {
+    options.headers['Accept-Encoding'] = 'gzip, deflate'
   }
 
   const {
@@ -84,6 +91,7 @@ export default aqt
  * @prop {Object} data Optional data to send to the server with the request.
  * @prop {'form'|'json'} [type="'json'"] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. Default `'json'`.
  * @prop {OutgoingHttpHeaders} [headers] Headers to use for the request.
+ * @prop {boolean} [compress=true] Add the `Accept-Encoding: gzip, deflate` header automatically to indicate to the server that it can send a compressed response. Default `true`.
  * @prop {string} [headers="POST"] What HTTP method to use to send data. Default `POST`.
  * @prop {boolean} [binary=false] Whether to return a buffer instead of a string. Default `false`.
  * @prop {boolean} [justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.

@@ -18,7 +18,13 @@ const T = {
     equal(statusMessage, 'OK')
   },
   async 'requests compressed data from server'({ start }) {
+    let res
     const url = await start({
+      /** @type {import('koa').Middleware} */
+      async test(ctx, next) {
+        res = ctx.acceptsEncodings('gzip')
+        await next()
+      },
       compress: {
         use: true,
       },
@@ -35,6 +41,35 @@ const T = {
     ok(/Just then a heavy cloud passed across the face of the moon/.test(body))
     equal(statusCode, 200)
     equal(statusMessage, 'OK')
+    equal(res, 'gzip')
+  },
+  async 'requests uncompressed data from server'({ start }) {
+    let res
+    const url = await start({
+      /** @type {import('koa').Middleware} */
+      async test(ctx, next) {
+        res = ctx.acceptsEncodings('gzip')
+        await next()
+      },
+      compress: {
+        use: true,
+      },
+      static: {
+        root: 'test/fixture',
+        use: true,
+      },
+    })
+    const {
+      body,
+      statusCode,
+      statusMessage,
+    } = await aqt(`${url}/chapter1.txt`, {
+      compress: false,
+    })
+    ok(/Just then a heavy cloud passed across the face of the moon/.test(body))
+    equal(statusCode, 200)
+    equal(statusMessage, 'OK')
+    ok(!res)
   },
 }
 
