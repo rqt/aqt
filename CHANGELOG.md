@@ -3,6 +3,7 @@
 ### 1.1.0
 
 - [feature] Add compression property to config.
+- [package] Update description and add the `network` tag.
 
 ## 24 September 2018
 
