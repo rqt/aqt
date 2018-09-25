@@ -13,7 +13,7 @@ const T = {
   async 'is a function'() {
     equal(typeof aqt, 'function')
   },
-  async 'requests data from server' ({ setResponse, getState, url }) {
+  async 'requests data from server'({ setResponse, getState, url }) {
     const expected = 'test-data'
     setResponse(expected)
     const res = await aqt(url)

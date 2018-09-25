@@ -1,5 +1,5 @@
 import erotic from 'erotic'
-import { makeRequest } from './make-request'
+import makeRequest from './make-request'
 
 export const getFormData = (form = {}) => {
   const urlEncodedDataPairs = Object.keys(form).reduce((acc, key) => {
@@ -37,13 +37,7 @@ export const exec = async (request, requestOptions,
     binary,
     er,
   })
-  if (data) {
-    req.write(data, () => {
-      req.end()
-    })
-  } else {
-    req.end()
-  }
+  req.end(data)
   const res = await promise
 
   const isJson = isHeadersJson(res.headers)
