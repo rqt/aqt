@@ -4,6 +4,7 @@
 
 - [feature] Add compression property to config.
 - [package] Update description and add the `network` tag.
+- [test] Test with [_IdioCore_](https://idio.cc).
 
 ## 24 September 2018
 
