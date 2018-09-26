@@ -1,4 +1,4 @@
-## `Result` Type
+## `AqtReturn` Type
 
 The result of the `aqt` function will have the following structure:
 

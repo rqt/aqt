@@ -1,7 +1,7 @@
-```## aqt => Result
+```## aqt => AqtReturn
 [
   ["url", "string"],
-  ["config?", "Config"]
+  ["options?", "AqtOptions"]
 ]
 ```
 

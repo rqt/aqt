@@ -16,7 +16,8 @@
     "build": "yarn-s b doc"
   },
   "files": [
-    "build"
+    "build",
+    "types"
   ],
   "repository": {
     "type": "git",

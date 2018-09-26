@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/%40rqt%2Faqt.svg)](https://npmjs.org/package/@rqt/aqt)
 
-`aqt` is a network request package for Node.js which returns the body (parsed if returned as _JSON_), headers and status after _gzip_ decompression when necessary.
+`aqt` is a network request package for Node.js that returns the body (parsed if returned as _JSON_), headers and status after _gzip_ decompression when necessary.
 
 ```sh
 yarn add -E @rqt/aqt
@@ -12,9 +12,9 @@ yarn add -E @rqt/aqt
 
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
-- [`aqt(url: string, config?: Config): Result`](#aqturl-stringconfig-config-result)
-  * [`Config`](#type-config)
-- [`Result` Type](#result-type)
+- [`aqt(url: string, options?: AqtOptions): AqtReturn`](#aqturl-stringoptions-aqtoptions-aqtreturn)
+  * [`AqtOptions`](#type-aqtoptions)
+- [`AqtReturn` Type](#aqtreturn-type)
   * [<code>body</code>](#body)
   * [<code>headers</code>](#headers)
   * [<code>statusCode</code>](#statuscode)
@@ -33,13 +33,13 @@ import aqt from '@rqt/aqt'
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg?sanitize=true"></a></p>
 
-## `aqt(`<br/>&nbsp;&nbsp;`url: string,`<br/>&nbsp;&nbsp;`config?: Config,`<br/>`): Result`
+## `aqt(`<br/>&nbsp;&nbsp;`url: string,`<br/>&nbsp;&nbsp;`options?: AqtOptions,`<br/>`): AqtReturn`
 
 Makes a request to the URL, either with or without options.
 
 `import('http').OutgoingHttpHeaders` __<a name="type-outgoinghttpheaders">`OutgoingHttpHeaders`</a>__
 
-__<a name="type-config">`Config`</a>__: Configuration for requests.
+__<a name="type-aqtoptions">`AqtOptions`</a>__: Configuration for requests.
 
 |    Name     |                        Type                        |                                                           Description                                                           | Default  |
 | ----------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | -------- |
@@ -64,7 +64,7 @@ const Request = async (url) => {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Tue, 25 Sep 2018 10:41:13 GMT",
+    "date": "Wed, 26 Sep 2018 12:49:58 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
@@ -75,7 +75,7 @@ const Request = async (url) => {
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true"></a></p>
 
-## `Result` Type
+## `AqtReturn` Type
 
 The result of the `aqt` function will have the following structure:
 

@@ -1,6 +1,6 @@
 <types>
   <import name="OutgoingHttpHeaders" from="http"/>
-  <type name="Config" desc="Configuration for requests.">
+  <type name="AqtOptions" desc="Configuration for requests.">
     <prop type="Object" name="data">
       Optional data to send to the server with the request.
     </prop>
