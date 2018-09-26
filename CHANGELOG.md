@@ -1,5 +1,9 @@
 ## 26 September 2018
 
+### 1.1.2
+
+- [types] Add return type to the build.
+
 ### 1.1.1
 
 - [types] Publish types to use in `@rqt/rqt`.
