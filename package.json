@@ -1,6 +1,6 @@
 {
   "name": "@rqt/aqt",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "An Advanced Network Request Package That Returns Body (Parsed As JSON If Needed), Headers And Status After Gzip Decompression.",
   "main": "build",
   "scripts": {
