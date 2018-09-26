@@ -19,6 +19,7 @@ const LOG = debuglog('aqt')
  * @param {string} [options.headers="POST"] What HTTP method to use to send data. Default `POST`.
  * @param {boolean} [options.binary=false] Whether to return a buffer instead of a string. Default `false`.
  * @param {boolean} [options.justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
+ * @returns {Promise.<AqtReturn>} The body, headers and status.
  */
 const aqt = async (address, options = {}) => {
   const {
@@ -95,4 +96,16 @@ export default aqt
  * @prop {string} [headers="POST"] What HTTP method to use to send data. Default `POST`.
  * @prop {boolean} [binary=false] Whether to return a buffer instead of a string. Default `false`.
  * @prop {boolean} [justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
+ */
+
+
+/* documentary types/return.xml */
+/**
+ * @typedef {import('http').IncomingHttpHeaders} IncomingHttpHeaders
+ *
+ * @typedef {Object} AqtReturn
+ * @prop {string|object|Buffer} body The return from the server. In case the `json` content-type was set by the server, the response will be parsed into an object. If `binary` option was used for the request, a `Buffer` will be returned. Otherwise, a string response is returned.
+ * @prop {IncomingHttpHeaders} headers Incoming headers returned by the server.
+ * @prop {number} statusCode The status code returned by the server.
+ * @prop {string} statusMessage The status message set by the server.
  */

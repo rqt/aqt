@@ -11,16 +11,17 @@ const LOG = debuglog('aqt')
 /**
  * Request a web page and return information including `headers`, `statusCode`, `statusMessage` along with the `body` (which is also parsed if JSON received).
  * @param {string} address The URL such as http://example.com/api.
- * @param {Config} [config] Configuration for requests.
- * @param {Object} config.data Optional data to send to the server with the request.
- * @param {'form'|'json'} [config.type="'json'"] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. Default `'json'`.
- * @param {OutgoingHttpHeaders} [config.headers] Headers to use for the request.
- * @param {boolean} [config.compress=true] Add the `Accept-Encoding: gzip, deflate` header automatically to indicate to the server that it can send a compressed response. Default `true`.
- * @param {string} [config.headers="POST"] What HTTP method to use to send data. Default `POST`.
- * @param {boolean} [config.binary=false] Whether to return a buffer instead of a string. Default `false`.
- * @param {boolean} [config.justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
+ * @param {AqtOptions} [options] Configuration for requests.
+ * @param {Object} options.data Optional data to send to the server with the request.
+ * @param {'form'|'json'} [options.type="'json'"] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. Default `'json'`.
+ * @param {OutgoingHttpHeaders} [options.headers] Headers to use for the request.
+ * @param {boolean} [options.compress=true] Add the `Accept-Encoding: gzip, deflate` header automatically to indicate to the server that it can send a compressed response. Default `true`.
+ * @param {string} [options.headers="POST"] What HTTP method to use to send data. Default `POST`.
+ * @param {boolean} [options.binary=false] Whether to return a buffer instead of a string. Default `false`.
+ * @param {boolean} [options.justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
+ * @returns {Promise.<AqtReturn>} The body, headers and status.
  */
-const aqt = async (address, config = {}) => {
+const aqt = async (address, options = {}) => {
   const {
     data: d,
     type = 'json',
@@ -31,14 +32,14 @@ const aqt = async (address, config = {}) => {
     binary = false,
     method = 'POST',
     justHeaders = false,
-  } = config
+  } = options
   const er = erotic(true)
 
   const { hostname, protocol, port, path } = parse(address)
   const isHttps = protocol === 'https:'
   const request = isHttps ? https : http
 
-  const options = {
+  const opts = {
     hostname,
     port,
     path,
@@ -53,18 +54,18 @@ const aqt = async (address, config = {}) => {
       ; ({ data } = _d)
     const { contentType } = _d
 
-    options.method = method
-    options.headers['Content-Type'] = contentType
-    options.headers['Content-Length'] = Buffer.byteLength(data)
+    opts.method = method
+    opts.headers['Content-Type'] = contentType
+    opts.headers['Content-Length'] = Buffer.byteLength(data)
   }
   if (compress) {
-    options.headers['Accept-Encoding'] = 'gzip, deflate'
+    opts.headers['Accept-Encoding'] = 'gzip, deflate'
   }
 
   const {
     body, headers, byteLength, statusCode, statusMessage, rawLength,
     parsedBody,
-  } = await exec(request, options, {
+  } = await exec(request, opts, {
     data,
     justHeaders,
     binary,
@@ -87,7 +88,7 @@ module.exports=aqt
 /**
  * @typedef {import('http').OutgoingHttpHeaders} OutgoingHttpHeaders
  *
- * @typedef {Object} Config Configuration for requests.
+ * @typedef {Object} AqtOptions Configuration for requests.
  * @prop {Object} data Optional data to send to the server with the request.
  * @prop {'form'|'json'} [type="'json'"] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. Default `'json'`.
  * @prop {OutgoingHttpHeaders} [headers] Headers to use for the request.
@@ -95,6 +96,18 @@ module.exports=aqt
  * @prop {string} [headers="POST"] What HTTP method to use to send data. Default `POST`.
  * @prop {boolean} [binary=false] Whether to return a buffer instead of a string. Default `false`.
  * @prop {boolean} [justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
+ */
+
+
+/* documentary types/return.xml */
+/**
+ * @typedef {import('http').IncomingHttpHeaders} IncomingHttpHeaders
+ *
+ * @typedef {Object} AqtReturn
+ * @prop {string|object|Buffer} body The return from the server. In case the `json` content-type was set by the server, the response will be parsed into an object. If `binary` option was used for the request, a `Buffer` will be returned. Otherwise, a string response is returned.
+ * @prop {IncomingHttpHeaders} headers Incoming headers returned by the server.
+ * @prop {number} statusCode The status code returned by the server.
+ * @prop {string} statusMessage The status message set by the server.
  */
 
 //# sourceMappingURL=index.js.map
