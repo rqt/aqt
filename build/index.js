@@ -109,5 +109,3 @@ module.exports=aqt
  * @prop {number} statusCode The status code returned by the server.
  * @prop {string} statusMessage The status message set by the server.
  */
-
-//# sourceMappingURL=index.js.map

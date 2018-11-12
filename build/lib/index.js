@@ -1,5 +1,5 @@
 let erotic = require('erotic'); if (erotic && erotic.__esModule) erotic = erotic.default;
-let makeRequest = require('./make-request'); if (makeRequest && makeRequest.__esModule) makeRequest = makeRequest.default;
+const makeRequest = require('./make-request');
 
        const getFormData = (form = {}) => {
   const urlEncodedDataPairs = Object.keys(form).reduce((acc, key) => {
@@ -65,4 +65,3 @@ const isHeadersJson = (headers) => {
 module.exports.getFormData = getFormData
 module.exports.getData = getData
 module.exports.exec = exec
-//# sourceMappingURL=index.js.map
