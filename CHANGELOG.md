@@ -3,6 +3,7 @@
 ### 1.1.3
 
 - [deps] Install missing dependencies.
+- [build] Exclude source maps.
 
 ### 1.1.2
 
