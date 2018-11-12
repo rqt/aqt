@@ -1,3 +1,11 @@
+## 12 November 2018
+
+### 1.1.3
+
+- [deps] Install missing dependencies.
+
+### 1.1.2
+
 ## 26 September 2018
 
 ### 1.1.2
