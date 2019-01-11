@@ -329,6 +329,14 @@ catchment@3.1.1:
     "@artdeco/clean-stack" "1.0.0"
     erotic "2.0.1"
 
+catchment@3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/catchment/-/catchment-3.2.0.tgz#1b846c4a4acd488061b1b054274edd2f5111cd8d"
+  integrity sha512-mGhiTkSgPaKAEeB0lVLRM+TWlzkoPq5SGvAgsjNayfBzQjqwRdPIUs2Y1ksvU5WsP5JdtcPVFyyGLM6K8xnQqA==
+  dependencies:
+    "@artdeco/clean-stack" "1.0.0"
+    erotic "2.0.1"
+
 catchment@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/catchment/-/catchment-1.0.0.tgz#3061f71be0102710be84328d2f94363a165f8c4b"

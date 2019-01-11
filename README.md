@@ -47,7 +47,7 @@ __<a name="type-aqtoptions">`AqtOptions`</a>__: Configuration for requests.
 | type        | _'form'\|'json'_                                   | How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default.            | `'json'` |
 | headers     | _[OutgoingHttpHeaders](#type-outgoinghttpheaders)_ | Headers to use for the request.                                                                                                 | -        |
 | compress    | _boolean_                                          | Add the `Accept-Encoding: gzip, deflate` header automatically to indicate to the server that it can send a compressed response. | `true`   |
-| headers     | _string_                                           | What HTTP method to use to send data.                                                                                           | `POST`   |
+| method      | _string_                                           | What HTTP method to use to send data.                                                                                           | `POST`   |
 | binary      | _boolean_                                          | Whether to return a buffer instead of a string.                                                                                 | `false`  |
 | justHeaders | _boolean_                                          | Whether to stop the request after response headers were received, without waiting for the data.                                 | `false`  |
 ```js
@@ -64,7 +64,7 @@ const Request = async (url) => {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Wed, 26 Sep 2018 12:49:58 GMT",
+    "date": "Fri, 11 Jan 2019 05:45:38 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
@@ -153,6 +153,6 @@ The result of the `aqt` function will have the following structure:
 
 ## Copyright
 
-(c) [Rqt][1] 2018
+(c) [Rqt][1] 2019
 
 [1]: https://rqt.biz
