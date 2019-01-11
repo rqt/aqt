@@ -1,5 +1,9 @@
 ## 11 January 2018
 
+### 1.1.5
+
+- [fix] Do fix correct `method` JSDoc.
+
 ### 1.1.4
 
 - [fix] Correct `method` JSDoc.
