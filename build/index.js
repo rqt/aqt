@@ -16,7 +16,7 @@ const LOG = debuglog('aqt')
  * @param {'form'|'json'} [options.type="'json'"] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. Default `'json'`.
  * @param {OutgoingHttpHeaders} [options.headers] Headers to use for the request.
  * @param {boolean} [options.compress=true] Add the `Accept-Encoding: gzip, deflate` header automatically to indicate to the server that it can send a compressed response. Default `true`.
- * @param {string} [options.headers="POST"] What HTTP method to use to send data. Default `POST`.
+ * @param {string} [options.method="POST"] What HTTP method to use to send data. Default `POST`.
  * @param {boolean} [options.binary=false] Whether to return a buffer instead of a string. Default `false`.
  * @param {boolean} [options.justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
  * @returns {Promise.<AqtReturn>} The body, headers and status.
@@ -93,7 +93,7 @@ module.exports=aqt
  * @prop {'form'|'json'} [type="'json'"] How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. Default `'json'`.
  * @prop {OutgoingHttpHeaders} [headers] Headers to use for the request.
  * @prop {boolean} [compress=true] Add the `Accept-Encoding: gzip, deflate` header automatically to indicate to the server that it can send a compressed response. Default `true`.
- * @prop {string} [headers="POST"] What HTTP method to use to send data. Default `POST`.
+ * @prop {string} [method="POST"] What HTTP method to use to send data. Default `POST`.
  * @prop {boolean} [binary=false] Whether to return a buffer instead of a string. Default `false`.
  * @prop {boolean} [justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
  */

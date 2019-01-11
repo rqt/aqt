@@ -13,7 +13,7 @@
     "e": "node example",
     "example/": "yarn e example/example.js",
     "b": "alamode src -o build -s",
-    "build": "yarn-s b doc"
+    "build": "yarn-s d b doc"
   },
   "files": [
     "build",
