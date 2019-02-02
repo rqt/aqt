@@ -1,4 +1,8 @@
-## 2 February 2018
+## 2 February 2019
+
+### 1.2.1
+
+- [feature] Point to the exact module.
 
 ### 1.2.0
 
