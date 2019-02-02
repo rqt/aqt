@@ -11,7 +11,7 @@ export default class IdioContext {
     this.url = url
     return url
   }
-  getOptions(p) {
+  getOptions(p = '') {
     const { hostname, path, port } =  parse(`${this.url}/${p}`)
     return {
       hostname, path, port,

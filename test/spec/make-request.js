@@ -1,4 +1,4 @@
-import { ok, equal } from 'zoroaster/assert'
+import { ok, equal, throws } from 'zoroaster/assert'
 import { request } from 'http'
 import makeRequest from '../../src/lib/make-request'
 import IdioContext from '../context/idio'
@@ -33,6 +33,29 @@ const ts = {
     equal(statusCode, 200)
     ok(rawLength < byteLength)
     equal(contentEncoding, 'gzip')
+  },
+  async 'times out'({ start, getOptions }) {
+    let to
+    await start({
+      async index(ctx) {
+        await new Promise(r => {
+          to = setTimeout(r, 1000)
+        })
+        ctx.body = 'ok'
+      },
+    })
+    const opts = getOptions()
+    const { req, promise } = makeRequest(request, {
+      ...opts,
+      timeout: 500,
+    })
+    req.end()
+    await throws({
+      fn: () => promise,
+      code: 'ECONNRESET',
+      message: 'socket hang up',
+    })
+    clearTimeout(to)
   },
 }
 
