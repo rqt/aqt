@@ -60,6 +60,9 @@ const makeRequest = (request, requestOptions, config = {}) => {
         const err = er(error)
         j(err)
       })
+      .on('timeout', () => {
+        req.abort()
+      })
   }).then(() => {
     const r = {
       body,
