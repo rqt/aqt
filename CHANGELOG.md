@@ -1,5 +1,13 @@
 ## 11 January 2018
 
+### 1.2.0
+
+- [feature] Add timeout option.
+- [package] Export the module.
+- [package] Add [https://www.technation.sucks](Tech Nation Visa Sucks) footer.
+
+## 11 January 2019
+
 ### 1.1.5
 
 - [fix] Do fix correct `method` JSDoc.
