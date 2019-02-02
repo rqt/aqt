@@ -1,4 +1,4 @@
-import { equal, ok } from 'zoroaster/assert'
+import { equal, ok, throws } from 'zoroaster/assert'
 import aqt from '../../src'
 import IdioContext from '../context/idio'
 
@@ -70,6 +70,26 @@ const T = {
     equal(statusCode, 200)
     equal(statusMessage, 'OK')
     ok(!res)
+  },
+  async 'times out'({ start }) {
+    let to
+    const url = await start({
+      async test(ctx, next) {
+        await new Promise(r => {
+          to = setTimeout(r, 1000)
+        })
+        ctx.body = 'ok'
+        await next()
+      },
+    })
+    await throws({
+      async fn() {
+        await aqt(url, {
+          timeout: 500,
+        })
+      },
+    })
+    clearTimeout(to)
   },
 }
 
