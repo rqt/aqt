@@ -1,5 +1,6 @@
 ## Copyright
 
-(c) [Rqt][1] 2019
-
-[1]: https://rqt.biz
+<Footer
+  client="Rqt"
+  clientLink="http://rqt.biz"
+/>

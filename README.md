@@ -41,15 +41,16 @@ Makes a request to the URL, either with or without options.
 
 __<a name="type-aqtoptions">`AqtOptions`</a>__: Configuration for requests.
 
-|    Name     |                        Type                        |                                                           Description                                                           | Default  |
-| ----------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| __data*__   | _Object_                                           | Optional data to send to the server with the request.                                                                           | -        |
-| type        | _'form'\|'json'_                                   | How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default.            | `'json'` |
-| headers     | _[OutgoingHttpHeaders](#type-outgoinghttpheaders)_ | Headers to use for the request.                                                                                                 | -        |
-| compress    | _boolean_                                          | Add the `Accept-Encoding: gzip, deflate` header automatically to indicate to the server that it can send a compressed response. | `true`   |
-| method      | _string_                                           | What HTTP method to use to send data.                                                                                           | `POST`   |
-| binary      | _boolean_                                          | Whether to return a buffer instead of a string.                                                                                 | `false`  |
-| justHeaders | _boolean_                                          | Whether to stop the request after response headers were received, without waiting for the data.                                 | `false`  |
+|    Name     |                        Type                        |                                                     Description                                                      | Default  |
+| ----------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------- |
+| __data*__   | _Object_                                           | Optional data to send to the server with the request.                                                                | -        |
+| type        | _'form'\|'json'_                                   | How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. | `'json'` |
+| headers     | _[OutgoingHttpHeaders](#type-outgoinghttpheaders)_ | Headers to use for the request.                                                                                      | -        |
+| compress    | _boolean_                                          | Add the `Accept-Encoding: gzip, deflate` header to indicate to the server that it can send a compressed response.    | `true`   |
+| timeout     | _number_                                           | The timeout after which the request should fail.                                                                     | -        |
+| method      | _string_                                           | What HTTP method to use to send data.                                                                                | `POST`   |
+| binary      | _boolean_                                          | Whether to return a buffer instead of a string.                                                                      | `false`  |
+| justHeaders | _boolean_                                          | Whether to stop the request after response headers were received, without waiting for the data.                      | `false`  |
 ```js
 import aqt from '@rqt/aqt'
 
@@ -64,7 +65,7 @@ const Request = async (url) => {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Fri, 11 Jan 2019 05:57:33 GMT",
+    "date": "Sat, 02 Feb 2019 15:40:28 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
@@ -153,6 +154,24 @@ The result of the `aqt` function will have the following structure:
 
 ## Copyright
 
-(c) [Rqt][1] 2019
-
-[1]: https://rqt.biz
+<table>
+  <tr>
+    <th>
+      <a href="https://artd.eco">
+        <img src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png" alt="Art Deco" />
+      </a>
+    </th>
+    <th>
+      © <a href="https://artd.eco">Art Deco</a> for <a href="http://rqt.biz">Rqt</a>
+      2019
+    </th>
+    <th>
+      <a href="https://www.technation.sucks" title="Tech Nation Visa">
+        <img src="https://raw.githubusercontent.com/artdecoweb/www.technation.sucks/master/anim.gif" alt="Tech Nation Visa" />
+      </a>
+    </th>
+    <th>
+      <a href="https://www.technation.sucks">Tech Nation Visa Sucks</a>
+    </th>
+  </tr>
+</table>
