@@ -16,8 +16,8 @@
     <prop opt number name="timeout">
       The timeout after which the request should fail.
     </prop>
-    <prop opt string name="method" default="POST">
-      What HTTP method to use to send data.
+    <prop opt string name="method">
+      What HTTP method to use in making of the request. When no method is given and `data` is present, defaults to `POST`.
     </prop>
     <prop boolean name="binary" default="false">
       Whether to return a buffer instead of a string.

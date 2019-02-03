@@ -102,6 +102,18 @@ const T = {
     const { body } = await aqt(url)
     ok(!body)
   },
+  async 'sets the method without body'({ start, getRouter, getApp }) {
+    const url = await start()
+    const router = getRouter()
+    router.delete('/', (ctx) => {
+      ctx.body = 'ok'
+    })
+    getApp().use(router.routes())
+    const { body } = await aqt(url, {
+      method: 'DELETE',
+    })
+    equal(body, 'ok')
+  },
 }
 
 export default T

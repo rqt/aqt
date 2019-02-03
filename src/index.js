@@ -17,7 +17,7 @@ const LOG = debuglog('aqt')
  * @param {OutgoingHttpHeaders} [options.headers] Headers to use for the request.
  * @param {boolean} [options.compress=true] Add the `Accept-Encoding: gzip, deflate` header to indicate to the server that it can send a compressed response. Default `true`.
  * @param {number} [options.timeout] The timeout after which the request should fail.
- * @param {string} [options.method="POST"] What HTTP method to use to send data. Default `POST`.
+ * @param {string} [options.method] What HTTP method to use in making of the request. When no method is given and `data` is present, defaults to `POST`.
  * @param {boolean} [options.binary=false] Whether to return a buffer instead of a string. Default `false`.
  * @param {boolean} [options.justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
  * @returns {Promise.<AqtReturn>} The body, headers and status.
@@ -31,8 +31,8 @@ const aqt = async (address, options = {}) => {
     },
     compress = true,
     binary = false,
-    method = 'POST',
     justHeaders = false,
+    method,
     timeout,
   } = options
   const er = erotic(true)
@@ -49,6 +49,7 @@ const aqt = async (address, options = {}) => {
       ...outgoingHeaders,
     },
     timeout,
+    method,
   }
 
   let data
@@ -57,7 +58,7 @@ const aqt = async (address, options = {}) => {
       ; ({ data } = _d)
     const { contentType } = _d
 
-    opts.method = method
+    opts.method = method || 'POST'
     opts.headers['Content-Type'] = contentType
     opts.headers['Content-Length'] = Buffer.byteLength(data)
   }
@@ -97,7 +98,7 @@ export default aqt
  * @prop {OutgoingHttpHeaders} [headers] Headers to use for the request.
  * @prop {boolean} [compress=true] Add the `Accept-Encoding: gzip, deflate` header to indicate to the server that it can send a compressed response. Default `true`.
  * @prop {number} [timeout] The timeout after which the request should fail.
- * @prop {string} [method="POST"] What HTTP method to use to send data. Default `POST`.
+ * @prop {string} [method] What HTTP method to use in making of the request. When no method is given and `data` is present, defaults to `POST`.
  * @prop {boolean} [binary=false] Whether to return a buffer instead of a string. Default `false`.
  * @prop {boolean} [justHeaders=false] Whether to stop the request after response headers were received, without waiting for the data. Default `false`.
  */

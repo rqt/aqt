@@ -4,12 +4,19 @@ import idioCore from '@idio/core'
 export default class IdioContext {
   /** @param {import('@idio/core').MiddlewareConfig} middleware */
   async start(middleware) {
-    const { app, url } = await idioCore(middleware, {
+    const { app, url, router } = await idioCore(middleware, {
       port: 0,
     })
     this.app = app
     this.url = url
+    this.router = router
     return url
+  }
+  getRouter() {
+    return this.router
+  }
+  getApp() {
+    return this.app
   }
   getOptions(p = '') {
     const { hostname, path, port } =  parse(`${this.url}/${p}`)
