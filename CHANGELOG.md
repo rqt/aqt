@@ -1,3 +1,9 @@
+## 3 February 2019
+
+### 1.2.2
+
+- [fix] Don't parse `JSON` if body is empty.
+
 ## 2 February 2019
 
 ### 1.2.1
