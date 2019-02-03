@@ -42,7 +42,7 @@ export const exec = async (request, requestOptions,
 
   const isJson = isHeadersJson(res.headers)
 
-  if (isJson) {
+  if (isJson && res.body) {
     try {
       res.parsedBody = JSON.parse(res.body)
     } catch (e) {

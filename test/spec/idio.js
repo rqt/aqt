@@ -91,6 +91,17 @@ const T = {
     })
     clearTimeout(to)
   },
+  async 'returns empty json body'({ start }) {
+    const url = await start({
+      async test(ctx, next) {
+        ctx.type = 'application/json'
+        ctx.body = ''
+        await next()
+      },
+    })
+    const { body } = await aqt(url)
+    ok(!body)
+  },
 }
 
 export default T
