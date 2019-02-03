@@ -1,5 +1,9 @@
 ## 3 February 2019
 
+### 1.2.3
+
+- [fix] Set the method when no data is given.
+
 ### 1.2.2
 
 - [fix] Don't parse `JSON` if body is empty.
