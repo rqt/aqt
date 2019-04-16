@@ -102,6 +102,15 @@ const T = {
     const { body } = await aqt(url)
     ok(!body)
   },
+  async 'does not throw when type is not given'({ start }) {
+    const url = await start({
+      test(ctx) {
+        ctx.status = 304
+      },
+    })
+    const { body } = await aqt(url)
+    ok(!body)
+  },
   async 'sets the method without body'({ start, getRouter, getApp }) {
     const url = await start()
     const router = getRouter()

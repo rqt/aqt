@@ -59,5 +59,6 @@ export const exec = async (request, requestOptions,
  * @param {IncomingMessage.headers} headers
  */
 const isHeadersJson = (headers) => {
-  return headers['content-type'].startsWith('application/json')
+  const { 'content-type': contentType = '' } = headers
+  return contentType.startsWith('application/json')
 }
