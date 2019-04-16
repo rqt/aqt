@@ -11,7 +11,7 @@
     "doc": "NODE_DEBUG=doc doc documentary -o README.md",
     "d": "NODE_DEBUG=doc doc src/index.js -g",
     "lint": "eslint .",
-    "e": "node example",
+    "e": "alanode",
     "example/": "yarn e example/example.js",
     "b": "alamode src -o build -s",
     "build": "yarn-s d b doc"

@@ -44,7 +44,7 @@ __<a name="type-aqtoptions">`AqtOptions`</a>__: Configuration for requests.
 |    Name     |                        Type                        |                                                     Description                                                      | Default  |
 | ----------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------- |
 | __data*__   | _Object_                                           | Optional data to send to the server with the request.                                                                | -        |
-| type        | _'form'\|'json'_                                   | How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. | `'json'` |
+| type        | _'form' \| 'json'_                                 | How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. | `'json'` |
 | headers     | _[OutgoingHttpHeaders](#type-outgoinghttpheaders)_ | Headers to use for the request.                                                                                      | -        |
 | compress    | _boolean_                                          | Add the `Accept-Encoding: gzip, deflate` header to indicate to the server that it can send a compressed response.    | `true`   |
 | timeout     | _number_                                           | The timeout after which the request should fail.                                                                     | -        |
@@ -65,7 +65,7 @@ const Request = async (url) => {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Sun, 03 Feb 2019 05:17:38 GMT",
+    "date": "Tue, 16 Apr 2019 14:12:33 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
@@ -161,17 +161,13 @@ The result of the `aqt` function will have the following structure:
         <img src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png" alt="Art Deco" />
       </a>
     </th>
-    <th>
-      © <a href="https://artd.eco">Art Deco</a> for <a href="http://rqt.biz">Rqt</a>
-      2019
-    </th>
+    <th>© <a href="https://artd.eco">Art Deco</a> for <a href="http://rqt.biz">Rqt</a> 2019</th>
     <th>
       <a href="https://www.technation.sucks" title="Tech Nation Visa">
-        <img src="https://raw.githubusercontent.com/artdecoweb/www.technation.sucks/master/anim.gif" alt="Tech Nation Visa" />
+        <img src="https://raw.githubusercontent.com/artdecoweb/www.technation.sucks/master/anim.gif"
+          alt="Tech Nation Visa" />
       </a>
     </th>
-    <th>
-      <a href="https://www.technation.sucks">Tech Nation Visa Sucks</a>
-    </th>
+    <th><a href="https://www.technation.sucks">Tech Nation Visa Sucks</a></th>
   </tr>
 </table>

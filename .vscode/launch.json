@@ -25,10 +25,10 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Example",
-      "program": "${workspaceFolder}/example/index.js",
+      "program": "${workspaceFolder}/node_modules/.bin/alanode",
       "console": "integratedTerminal",
       "args": [
-        "example/example.js",
+        "example",
       ],
       "sourceMaps": false,
       "skipFiles": [

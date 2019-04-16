@@ -59,7 +59,8 @@ const makeRequest = require('./make-request');
  * @param {IncomingMessage.headers} headers
  */
 const isHeadersJson = (headers) => {
-  return headers['content-type'].startsWith('application/json')
+  const { 'content-type': contentType = '' } = headers
+  return contentType.startsWith('application/json')
 }
 
 module.exports.getFormData = getFormData
