@@ -1,3 +1,10 @@
+## 16 April 2019
+
+### [1.2.4](https://github.com/rqt/aqt/compare/v1.2.3...v1.2.4)
+
+- [fix] Do not throw if `content-type` is not returned.
+- [deps] Unfix and update dependencies.
+
 ## 3 February 2019
 
 ### 1.2.3
