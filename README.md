@@ -37,20 +37,20 @@ import aqt from '@rqt/aqt'
 
 Makes a request to the URL, either with or without options.
 
-`import('http').OutgoingHttpHeaders` __<a name="type-outgoinghttpheaders">`OutgoingHttpHeaders`</a>__
+`import('http').OutgoingHttpHeaders` __<a name="type-httpoutgoinghttpheaders">`http.OutgoingHttpHeaders`</a>__
 
 __<a name="type-aqtoptions">`AqtOptions`</a>__: Configuration for requests.
 
-|    Name     |                        Type                        |                                                     Description                                                      | Default  |
-| ----------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------- |
-| __data*__   | _Object_                                           | Optional data to send to the server with the request.                                                                | -        |
-| type        | _'form' \| 'json'_                                 | How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. | `'json'` |
-| headers     | _[OutgoingHttpHeaders](#type-outgoinghttpheaders)_ | Headers to use for the request.                                                                                      | -        |
-| compress    | _boolean_                                          | Add the `Accept-Encoding: gzip, deflate` header to indicate to the server that it can send a compressed response.    | `true`   |
-| timeout     | _number_                                           | The timeout after which the request should fail.                                                                     | -        |
-| method      | _string_                                           | What HTTP method to use in making of the request. When no method is given and `data` is present, defaults to `POST`. | -        |
-| binary      | _boolean_                                          | Whether to return a buffer instead of a string.                                                                      | `false`  |
-| justHeaders | _boolean_                                          | Whether to stop the request after response headers were received, without waiting for the data.                      | `false`  |
+|    Name     |                            Type                             |                                                     Description                                                      | Default  |
+| ----------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------- |
+| __data*__   | _Object_                                                    | Optional data to send to the server with the request.                                                                | -        |
+| type        | _'form' \| 'json'_                                          | How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. | `'json'` |
+| headers     | _[http.OutgoingHttpHeaders](#type-httpoutgoinghttpheaders)_ | Headers to use for the request.                                                                                      | -        |
+| compress    | _boolean_                                                   | Add the `Accept-Encoding: gzip, deflate` header to indicate to the server that it can send a compressed response.    | `true`   |
+| timeout     | _number_                                                    | The timeout after which the request should fail.                                                                     | -        |
+| method      | _string_                                                    | What HTTP method to use in making of the request. When no method is given and `data` is present, defaults to `POST`. | -        |
+| binary      | _boolean_                                                   | Whether to return a buffer instead of a string.                                                                      | `false`  |
+| justHeaders | _boolean_                                                   | Whether to stop the request after response headers were received, without waiting for the data.                      | `false`  |
 ```js
 import aqt from '@rqt/aqt'
 
@@ -65,7 +65,7 @@ const Request = async (url) => {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Tue, 16 Apr 2019 14:12:33 GMT",
+    "date": "Tue, 16 Apr 2019 14:36:31 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
