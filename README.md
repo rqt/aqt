@@ -43,7 +43,7 @@ __<a name="type-aqtoptions">`AqtOptions`</a>__: Configuration for requests.
 
 |    Name     |                                Type                                |                                                     Description                                                      | Default  |
 | ----------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- | -------- |
-| __data*__   | <em>Object</em>                                                    | Optional data to send to the server with the request.                                                                | -        |
+| data        | <em>Object</em>                                                    | Optional data to send to the server with the request.                                                                | -        |
 | type        | <em>('form' \| 'json')</em>                                        | How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. | `'json'` |
 | headers     | <em>[http.OutgoingHttpHeaders](#type-httpoutgoinghttpheaders)</em> | Headers to use for the request.                                                                                      | -        |
 | compress    | <em>boolean</em>                                                   | Add the `Accept-Encoding: gzip, deflate` header to indicate to the server that it can send a compressed response.    | `true`   |
@@ -65,7 +65,7 @@ const Request = async (url) => {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Wed, 03 Jul 2019 15:32:44 GMT",
+    "date": "Wed, 03 Jul 2019 15:34:47 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },

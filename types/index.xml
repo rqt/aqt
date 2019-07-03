@@ -1,7 +1,7 @@
 <types>
   <import name="OutgoingHttpHeaders" from="http"/>
   <type name="AqtOptions" desc="Configuration for requests.">
-    <prop type="Object" name="data">
+    <prop type="Object" name="data" opt>
       Optional data to send to the server with the request.
     </prop>
     <prop name="type" type="'form'|'json'" default="'json'">
