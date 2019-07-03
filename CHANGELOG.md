@@ -1,3 +1,9 @@
+## 3 July 2019
+
+### [1.2.6](https://github.com/rqt/aqt/compare/v1.2.5...v1.2.6)
+
+- [fix] Don't override passed headers (_Content-Type_, _Content-Length_ and _Accept-Encoding_).
+
 ## 16 April 2019
 
 ### [1.2.5](https://github.com/rqt/aqt/compare/v1.2.4...v1.2.5)
