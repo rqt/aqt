@@ -1,19 +1,15 @@
 import { parse } from 'url'
-import idioCore from '@idio/core'
+import idioCore from '@idio/idio'
 
 export default class IdioContext {
-  /** @param {import('@idio/core').MiddlewareConfig} middleware */
+  /** @param {import('@idio/idio').MiddlewareConfig} middleware */
   async start(middleware) {
-    const { app, url, router } = await idioCore(middleware, {
+    const { app, url } = await idioCore(middleware, {
       port: 0,
     })
     this.app = app
     this.url = url
-    this.router = router
     return url
-  }
-  getRouter() {
-    return this.router
   }
   getApp() {
     return this.app

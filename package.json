@@ -43,7 +43,7 @@
   },
   "homepage": "https://github.com/rqt/aqt#readme",
   "devDependencies": {
-    "@idio/core": "^1.4.0",
+    "@idio/idio": "^0.1.0",
     "alamode": "^2.3.4",
     "documentary": "^1.27.4",
     "eslint-config-artdeco": "1.0.1",

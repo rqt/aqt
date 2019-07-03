@@ -111,13 +111,13 @@ const T = {
     const { body } = await aqt(url)
     ok(!body)
   },
-  async 'sets the method without body'({ start, getRouter, getApp }) {
-    const url = await start()
-    const router = getRouter()
-    router.delete('/', (ctx) => {
-      ctx.body = 'ok'
+  async 'sets the method without body (no data)'({ start }) {
+    const url = await start({
+      test(ctx) {
+        if (ctx.path == '/' && ctx.method == 'DELETE')
+          ctx.body = 'ok'
+      },
     })
-    getApp().use(router.routes())
     const { body } = await aqt(url, {
       method: 'DELETE',
     })
