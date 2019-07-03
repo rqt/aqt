@@ -123,6 +123,22 @@ const T = {
     })
     equal(body, 'ok')
   },
+  async 'does not update content-type'({ start }) {
+    const url = await start({
+      test(ctx) {
+        ctx.body = ctx.request.headers['content-type']
+          + ' '+ ctx.request.headers['content-length']
+      },
+    })
+    const { body } = await aqt(url, {
+      data: 'hello world',
+      headers: {
+        'Content-Type': 'multipart/form-data; boundary=TEST',
+        'Content-Length': 100,
+      },
+    })
+    equal(body, 'multipart/form-data; boundary=TEST 100')
+  },
 }
 
 export default T

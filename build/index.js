@@ -59,10 +59,14 @@ const aqt = async (address, options = {}) => {
     const { contentType } = _d
 
     opts.method = method || 'POST'
-    opts.headers['Content-Type'] = contentType
-    opts.headers['Content-Length'] = Buffer.byteLength(data)
+    if (!('Content-Type' in opts.headers)) {
+      opts.headers['Content-Type'] = contentType
+    }
+    if (!('Content-Length' in opts.headers)) {
+      opts.headers['Content-Length'] = Buffer.byteLength(data)
+    }
   }
-  if (compress) {
+  if (compress && !('Accept-Encoding' in opts.headers)) {
     opts.headers['Accept-Encoding'] = 'gzip, deflate'
   }
 
