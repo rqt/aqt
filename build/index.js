@@ -1,7 +1,7 @@
 const { request: https } = require('https');
 const { request: http } = require('http');
 const { debuglog } = require('util');
-let erotic = require('erotic'); if (erotic && erotic.__esModule) erotic = erotic.default;
+const erotic = require('erotic');
 const { parse } = require('url');
 const { version } = require('../package.json');
 const { getData, exec } = require('./lib');

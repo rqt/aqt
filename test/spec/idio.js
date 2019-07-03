@@ -1,4 +1,4 @@
-import { equal, ok, throws } from 'zoroaster/assert'
+import { equal, ok, throws } from '@zoroaster/assert'
 import aqt from '../../src'
 import IdioContext from '../context/idio'
 

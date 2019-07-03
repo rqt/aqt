@@ -1,7 +1,7 @@
-let erotic = require('erotic'); if (erotic && erotic.__esModule) erotic = erotic.default;
+const erotic = require('erotic');
 const makeRequest = require('./make-request');
 
-       const getFormData = (form = {}) => {
+const getFormData = (form = {}) => {
   const urlEncodedDataPairs = Object.keys(form).reduce((acc, key) => {
     const v = form[key]
     const p = `${encodeURIComponent(key)}=${encodeURIComponent(v)}`
@@ -12,7 +12,7 @@ const makeRequest = require('./make-request');
   return d
 }
 
-       const getData = (type, data) => {
+const getData = (type, data) => {
   switch (type) {
   case 'json':
     data = JSON.stringify(data)
@@ -29,7 +29,7 @@ const makeRequest = require('./make-request');
   }
 }
 
-       const exec = async (request, requestOptions,
+const exec = async (request, requestOptions,
   { data, justHeaders, binary, er = erotic(true) },
 ) => {
   const { req, promise } = makeRequest(request, requestOptions, {

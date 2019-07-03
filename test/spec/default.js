@@ -1,4 +1,4 @@
-import { ok, assert, equal, deepEqual, throws } from 'zoroaster/assert'
+import { ok, assert, equal, deepEqual, throws } from '@zoroaster/assert'
 import { HTTPContext } from 'https-context'
 import aqt from '../../src'
 import Context from '../context'

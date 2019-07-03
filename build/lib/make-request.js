@@ -1,11 +1,11 @@
-let erotic = require('erotic'); if (erotic && erotic.__esModule) erotic = erotic.default;
+const erotic = require('erotic');
 const { collect } = require('catchment');
 const { createGunzip } = require('zlib');
 
 /**
  * @param {import('http').IncomingMessage} req
  */
-       const isMessageGzip = (res) => {
+const isMessageGzip = (res) => {
   return res.headers['content-encoding'] == 'gzip'
 }
 

@@ -1,4 +1,4 @@
-import { ok, equal, throws } from 'zoroaster/assert'
+import { ok, equal, throws } from '@zoroaster/assert'
 import { request } from 'http'
 import makeRequest from '../../src/lib/make-request'
 import IdioContext from '../context/idio'
