@@ -4,7 +4,7 @@
 
 `aqt` is a network request package for Node.JS that returns the body (parsed if returned as _JSON_), headers and status after _gzip_ decompression when necessary.
 
-```sh
+```console
 yarn add @rqt/aqt
 ```
 
