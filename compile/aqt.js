@@ -149,7 +149,7 @@ const V = (a = {}) => Object.keys(a).reduce((b, c) => {
 const {version:X} = require("../package.json"), Y = z("aqt");
 module.exports = async(a, b) => {
   b = void 0 === b ? {} : b;
-  const {data:c, type:f = "json", headers:d = {"User-Agent":`Mozilla/5.0 (Node.js) aqt/${X}`}, compress:e = !0, binary:k = !1, justHeaders:l = !1, method:n, timeout:q} = b;
+  const {data:c, type:f = "json", headers:d = {"User-Agent":`Mozilla/5.0 (Node.JS) aqt/${X}`}, compress:e = !0, binary:k = !1, justHeaders:l = !1, method:n, timeout:q} = b;
   b = M(!0);
   const {hostname:g, protocol:t, port:v, path:w} = N(a), h = "https:" === t ? u : y, p = {hostname:g, port:v, path:w, headers:Object.assign({}, d), timeout:q, method:n};
   if (c) {

@@ -111,7 +111,7 @@ const T = {
     equal(headers['x-test'], testHeader)
   },
   async 'sends user-agent'({ url, getState }) {
-    const expected = `Mozilla/5.0 (Node.js) aqt/${version}`
+    const expected = `Mozilla/5.0 (Node.JS) aqt/${version}`
     await aqt(url, {
       data: 'test',
       contentType: 'application/x-www-form-urlencoded',

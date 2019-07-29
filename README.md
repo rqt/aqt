@@ -69,7 +69,7 @@ __<a name="type-aqtoptions">`AqtOptions`</a>__: Configuration for requests.
  </tr>
  <tr></tr>
  <tr>
-  <td>Headers to use for the request.</td>
+  <td>Headers to use for the request. By default, a single User-Agent header with <em>Mozilla/5.0 (Node.JS) aqt/{version}</em> value is set.</td>
  </tr>
  <tr>
   <td rowSpan="3" align="center">compress</td>
@@ -141,7 +141,7 @@ const Request = async (url) => {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Mon, 29 Jul 2019 16:32:09 GMT",
+    "date": "Mon, 29 Jul 2019 16:34:16 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },

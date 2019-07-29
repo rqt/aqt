@@ -9,7 +9,7 @@
       How to send data: `json` to serialise JSON data and add _Content-Type: application/json_ header, and `form` for url-encoded transmission with _Content-Type: application/x-www-form-urlencoded_. _Multipart/form-data_ must be implemented manually.
     </prop>
     <prop opt type="!http.OutgoingHttpHeaders" name="headers">
-      Headers to use for the request.
+      Headers to use for the request. By default, a single User-Agent header with _Mozilla/5.0 (Node.JS) aqt/{version}_ value is set.
     </prop>
     <prop boolean name="compress" default="true">
       Add the `Accept-Encoding: gzip, deflate` header to indicate to the server that it can send a compressed response.

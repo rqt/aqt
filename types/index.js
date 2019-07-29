@@ -8,7 +8,7 @@ export {}
  * @typedef {Object} _rqt.AqtOptions Configuration for requests.
  * @prop {!Object} [data] Optional data to send to the server with the request.
  * @prop {string} [type="json"] How to send data: `json` to serialise JSON data and add _Content-Type: application/json_ header, and `form` for url-encoded transmission with _Content-Type: application/x-www-form-urlencoded_. _Multipart/form-data_ must be implemented manually. Default `json`.
- * @prop {!http.OutgoingHttpHeaders} [headers] Headers to use for the request.
+ * @prop {!http.OutgoingHttpHeaders} [headers] Headers to use for the request. By default, a single User-Agent header with _Mozilla/5.0 (Node.JS) aqt/{version}_ value is set.
  * @prop {boolean} [compress=true] Add the `Accept-Encoding: gzip, deflate` header to indicate to the server that it can send a compressed response. Default `true`.
  * @prop {number} [timeout] The timeout after which the request should fail.
  * @prop {string} [method] What HTTP method to use in making of the request. When no method is given and `data` is present, defaults to `POST`.

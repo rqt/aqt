@@ -20,7 +20,7 @@ const aqt = async (address, options = {}) => {
     data: d,
     type = 'json',
     headers: outgoingHeaders = {
-      'User-Agent': `Mozilla/5.0 (Node.js) aqt/${version}`,
+      'User-Agent': `Mozilla/5.0 (Node.JS) aqt/${version}`,
     },
     compress = true,
     binary = false,
