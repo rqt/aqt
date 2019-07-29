@@ -1,10 +1,11 @@
-<types>
+<types namespace="_rqt">
   <import name="IncomingHttpHeaders" from="http" />
-  <type name="AqtReturn">
-    <prop name="body" type="string|Object|Buffer">
+
+  <type name="AqtReturn" desc="The return type of the function.">
+    <prop name="body" type="!(string|Object|Buffer)">
       The return from the server. In case the `json` content-type was set by the server, the response will be parsed into an object. If `binary` option was used for the request, a `Buffer` will be returned. Otherwise, a string response is returned.
     </prop>
-    <prop name="headers" type="http.IncomingHttpHeaders">
+    <prop name="headers" type="!http.IncomingHttpHeaders">
       Incoming headers returned by the server.
     </prop>
     <prop number name="statusCode">

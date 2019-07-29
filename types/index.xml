@@ -1,13 +1,14 @@
-<types>
+<types namespace="_rqt">
   <import name="OutgoingHttpHeaders" from="http"/>
+
   <type name="AqtOptions" desc="Configuration for requests.">
-    <prop type="Object" name="data" opt>
+    <prop type="!Object" name="data" opt>
       Optional data to send to the server with the request.
     </prop>
-    <prop name="type" type="'form'|'json'" default="'json'">
-      How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default.
+    <prop name="type" type="string" default="json">
+      How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. _Multipart/form-data_ must be implemented manually.
     </prop>
-    <prop opt type="http.OutgoingHttpHeaders" name="headers">
+    <prop opt type="!http.OutgoingHttpHeaders" name="headers">
       Headers to use for the request.
     </prop>
     <prop boolean name="compress" default="true">

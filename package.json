@@ -2,25 +2,26 @@
   "name": "@rqt/aqt",
   "version": "1.2.6",
   "description": "An Advanced Network Request Package That Returns Body (Parsed As JSON If Needed), Headers And Status After Gzip Decompression.",
-  "main": "build/index.js",
+  "main": "compile/index.js",
   "module": "src/index.js",
   "scripts": {
     "t": "zoroaster -a",
     "test": "yarn t test/spec",
-    "test-build": "ALAMODE_ENV=test-build yarn test",
+    "test-compile": "ALAMODE_ENV=test-compile yarn test",
+    "compile": "depack-dev src/depack -o compile/aqt.js -c -a -p -s --source_map_include_content",
     "doc": "NODE_DEBUG=doc doc -o README.md",
     "d": "typal src/index.js -c -g",
     "lint": "eslint .",
     "e": "alanode",
     "example/": "yarn e example/example.js",
-    "b": "alamode src -o build -s",
-    "build": "yarn-s d b doc"
+    "externs": "typal types/externs.js"
   },
   "files": [
-    "build",
-    "types",
-    "src"
+    "compile",
+    "src",
+    "types"
   ],
+  "externs": "types/externs.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/rqt/aqt.git"
@@ -49,10 +50,9 @@
     "eslint-config-artdeco": "1.0.1",
     "https-context": "^1.0.3",
     "yarn-s": "1.1.0",
-    "zoroaster": "^4.1.1-alpha"
-  },
-  "dependencies": {
+    "zoroaster": "^4.1.1-alpha",
     "catchment": "^3.3.0",
     "erotic": "^2.1.1"
-  }
+  },
+  "srcDependencies": ["catchment", "erotic"]
 }

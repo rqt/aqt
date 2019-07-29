@@ -1,36 +1,39 @@
 import erotic from 'erotic'
 import { collect } from 'catchment'
 import { createGunzip } from 'zlib'
+import { request as Request } from 'http' // eslint-disable-line
 
 /**
- * @param {import('http').IncomingMessage} req
+ * @param {!http.IncomingMessage} res
  */
 export const isMessageGzip = (res) => {
-  return res.headers['content-encoding'] == 'gzip'
+  /**
+   * @suppress {checkTypes}
+   */
+  const { 'content-encoding': contentEncoding } = res.headers
+  return contentEncoding == 'gzip'
 }
 
 /**
- * @param {typeof import('http').request} request The actual http or https request function.
- * @param {import('http').RequestOptions} requestOptions
- * @param {object} config Config object.
+ * @param {typeof Request} request The actual http or https request function.
+ * @param {!http.RequestOptions} requestOptions
+ * @param {!Object} [config] Config object.
  * @param {boolean} [config.justHeaders] only return headers as soon as available. false
  * @param {boolean} [config.binary] return binary
  * @param {boolean} [config.er] erotic callback
  */
 const makeRequest = (request, requestOptions, config = {}) => {
   const { justHeaders, binary, er = erotic(true) } = config
-  /** @type {import('http').ClientRequest} */
+  /** @type {!http.ClientRequest} */
   let req
 
-  /** @type {import('http').IncomingHttpHeaders} */
+  /** @type {!http.IncomingHttpHeaders} */
   let headers
   /** @type {{statusMessage: string, statusCode: number}} */
   let m
-  /** @type {string|Buffer} */
+  /** @type {string|!Buffer} */
   let body
-  /** @type {number} */
   let rawLength = 0
-  /** @type {number} */
   let byteLength = 0
 
   const promise = new Promise((r, j) => {
@@ -78,3 +81,20 @@ const makeRequest = (request, requestOptions, config = {}) => {
 }
 
 export default makeRequest
+
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('http').IncomingMessage} http.IncomingMessage
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('http').ClientRequest} http.ClientRequest
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('http').IncomingHttpHeaders} http.IncomingHttpHeaders
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('http').RequestOptions} http.RequestOptions
+ */

@@ -56,9 +56,18 @@ export const exec = async (request, requestOptions,
 }
 
 /**
- * @param {IncomingMessage.headers} headers
+ * Check if the returned content-type starts with application/json.
+ * @param {!http.IncomingHttpHeaders} headers
  */
 const isHeadersJson = (headers) => {
+  /**
+   * @suppress {checkTypes}
+   */
   const { 'content-type': contentType = '' } = headers
   return contentType.startsWith('application/json')
 }
+
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('http').IncomingHttpHeaders} http.IncomingHttpHeaders
+ */

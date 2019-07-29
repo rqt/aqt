@@ -2,10 +2,10 @@
 
 [![npm version](https://badge.fury.io/js/%40rqt%2Faqt.svg)](https://npmjs.org/package/@rqt/aqt)
 
-`aqt` is a network request package for Node.js that returns the body (parsed if returned as _JSON_), headers and status after _gzip_ decompression when necessary.
+`aqt` is a network request package for Node.JS that returns the body (parsed if returned as _JSON_), headers and status after _gzip_ decompression when necessary.
 
 ```sh
-yarn add -E @rqt/aqt
+yarn add @rqt/aqt
 ```
 
 ## Table Of Contents
@@ -13,7 +13,7 @@ yarn add -E @rqt/aqt
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
 - [`aqt(url: string, options?: AqtOptions): AqtReturn`](#aqturl-stringoptions-aqtoptions-aqtreturn)
-  * [`AqtOptions`](#type-aqtoptions)
+  * [`_rqt.AqtOptions`](#type-_rqtaqtoptions)
 - [`AqtReturn` Type](#aqtreturn-type)
   * [<code>body</code>](#body)
   * [<code>headers</code>](#headers)
@@ -37,20 +37,86 @@ import aqt from '@rqt/aqt'
 
 Makes a request to the URL, either with or without options.
 
-`import('http').OutgoingHttpHeaders` __<a name="type-httpoutgoinghttpheaders">`http.OutgoingHttpHeaders`</a>__
-
-__<a name="type-aqtoptions">`AqtOptions`</a>__: Configuration for requests.
-
-|    Name     |                                Type                                |                                                     Description                                                      | Default  |
-| ----------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- | -------- |
-| data        | <em>Object</em>                                                    | Optional data to send to the server with the request.                                                                | -        |
-| type        | <em>('form' \| 'json')</em>                                        | How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. | `'json'` |
-| headers     | <em>[http.OutgoingHttpHeaders](#type-httpoutgoinghttpheaders)</em> | Headers to use for the request.                                                                                      | -        |
-| compress    | <em>boolean</em>                                                   | Add the `Accept-Encoding: gzip, deflate` header to indicate to the server that it can send a compressed response.    | `true`   |
-| timeout     | <em>number</em>                                                    | The timeout after which the request should fail.                                                                     | -        |
-| method      | <em>string</em>                                                    | What HTTP method to use in making of the request. When no method is given and `data` is present, defaults to `POST`. | -        |
-| binary      | <em>boolean</em>                                                   | Whether to return a buffer instead of a string.                                                                      | `false`  |
-| justHeaders | <em>boolean</em>                                                   | Whether to stop the request after response headers were received, without waiting for the data.                      | `false`  |
+<strong><a name="type-_rqtaqtoptions">`_rqt.AqtOptions`</a></strong>: Configuration for requests.
+<table>
+ <thead><tr>
+  <th>Name</th>
+  <th>Type &amp; Description</th>
+  <th>Default</th>
+ </tr></thead>
+ <tr>
+  <td rowSpan="3" align="center">data</td>
+  <td><em>!Object</em></td>
+  <td rowSpan="3">-</td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>Optional data to send to the server with the request.</td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center">type</td>
+  <td><em>string</em></td>
+  <td rowSpan="3"><code>json</code></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>How to send data: <code>json</code> to serialise JSON data and <code>form</code> for url-encoded transmission with <code>json</code> mode by default. <em>Multipart/form-data</em> must be implemented manually.</td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center">headers</td>
+  <td><em><a href="https://nodejs.org/api/http.html#http_class_http_outgoinghttpheaders" title="The headers hash map for making requests, including such properties as Content-Encoding, Content-Type, etc.">!http.OutgoingHttpHeaders</a></em></td>
+  <td rowSpan="3">-</td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>Headers to use for the request.</td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center">compress</td>
+  <td><em>boolean</em></td>
+  <td rowSpan="3"><code>true</code></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>Add the <code>Accept-Encoding: gzip, deflate</code> header to indicate to the server that it can send a compressed response.</td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center">timeout</td>
+  <td><em>number</em></td>
+  <td rowSpan="3">-</td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>The timeout after which the request should fail.</td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center">method</td>
+  <td><em>string</em></td>
+  <td rowSpan="3">-</td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>What HTTP method to use in making of the request. When no method is given and <code>data</code> is present, defaults to <code>POST</code>.</td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center">binary</td>
+  <td><em>boolean</em></td>
+  <td rowSpan="3"><code>false</code></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>Whether to return a buffer instead of a string.</td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center">justHeaders</td>
+  <td><em>boolean</em></td>
+  <td rowSpan="3"><code>false</code></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>Whether to stop the request after response headers were received, without waiting for the data.</td>
+ </tr>
+</table>
 ```js
 import aqt from '@rqt/aqt'
 
@@ -65,7 +131,7 @@ const Request = async (url) => {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Wed, 03 Jul 2019 15:34:47 GMT",
+    "date": "Mon, 29 Jul 2019 16:21:42 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
@@ -158,13 +224,14 @@ The result of the `aqt` function will have the following structure:
   <tr>
     <th>
       <a href="https://artd.eco">
-        <img src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png" alt="Art Deco">
+        <img width="100" src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png"
+          alt="Art Deco">
       </a>
     </th>
     <th>© <a href="https://artd.eco">Art Deco</a> for <a href="http://rqt.biz">Rqt</a> 2019</th>
     <th>
       <a href="https://www.technation.sucks" title="Tech Nation Visa">
-        <img src="https://raw.githubusercontent.com/artdecoweb/www.technation.sucks/master/anim.gif"
+        <img width="100" src="https://raw.githubusercontent.com/idiocc/cookies/master/wiki/arch4.jpg"
           alt="Tech Nation Visa">
       </a>
     </th>
