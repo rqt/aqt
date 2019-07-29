@@ -60,7 +60,7 @@ Makes a request to the URL, either with or without options.
  </tr>
  <tr></tr>
  <tr>
-  <td>How to send data: <code>json</code> to serialise JSON data and <code>form</code> for url-encoded transmission with <code>json</code> mode by default. <em>Multipart/form-data</em> must be implemented manually.</td>
+  <td>How to send data: <code>json</code> to serialise JSON data and add <em>Content-Type: application/json</em> header, and <code>form</code> for url-encoded transmission with <em>Content-Type: application/x-www-form-urlencoded</em>. <em>Multipart/form-data</em> must be implemented manually.</td>
  </tr>
  <tr>
   <td rowSpan="3" align="center">headers</td>
@@ -131,7 +131,7 @@ const Request = async (url) => {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Mon, 29 Jul 2019 16:21:42 GMT",
+    "date": "Mon, 29 Jul 2019 16:28:05 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
