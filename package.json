@@ -10,11 +10,12 @@
     "test-compile": "ALAMODE_ENV=test-compile yarn test",
     "compile": "depack-dev src/depack -o compile/aqt.js -c -a -p -s --source_map_include_content",
     "doc": "NODE_DEBUG=doc doc -o README.md",
-    "d": "typal types/index.js types/externs.js compile/index.js",
+    "d": "yarn-s d1 dc",
+    "d1": "typal types/index.js types/externs.js",
+    "dc": "typal compile/index.js -c -t types/index.xml",
     "lint": "eslint .",
     "e": "alanode",
-    "example/": "yarn e example/example.js",
-    "externs": "typal types/externs.js"
+    "example/": "yarn e example/example.js"
   },
   "files": [
     "compile",
