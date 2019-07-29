@@ -6,7 +6,7 @@
       Optional data to send to the server with the request.
     </prop>
     <prop name="type" type="string" default="json">
-      How to send data: `json` to serialise JSON data and `form` for url-encoded transmission with `json` mode by default. _Multipart/form-data_ must be implemented manually.
+      How to send data: `json` to serialise JSON data and add _Content-Type: application/json_ header, and `form` for url-encoded transmission with _Content-Type: application/x-www-form-urlencoded_. _Multipart/form-data_ must be implemented manually.
     </prop>
     <prop opt type="!http.OutgoingHttpHeaders" name="headers">
       Headers to use for the request.
