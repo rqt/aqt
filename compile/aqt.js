@@ -16,7 +16,7 @@ const A = (a, b = 0, c = !1) => {
   }
   a = a.split("\n", c ? b + 1 : void 0);
   return c ? a[a.length - 1] : a.slice(b).join("\n");
-}, B = (a, b = !1) => A(a, 2 + (b ? 1 : 0)), F = a => {
+}, B = (a, b = !1) => A(a, 2 + (b ? 1 : 0)), C = a => {
   ({callee:{caller:a}} = a);
   return a;
 };
@@ -34,7 +34,7 @@ const H = /\s+at.*(?:\(|\s)(.*)\)?/, I = /^(?:(?:(?:node|(?:internal\/[\w/]*|.*n
 };
 function L(a, b, c = !1) {
   return function(f) {
-    var d = F(arguments), {stack:e} = Error();
+    var d = C(arguments), {stack:e} = Error();
     const k = A(e, 2, !0), l = (e = f instanceof Error) ? f.message : f;
     d = [`Error: ${l}`, ...null !== d && a === d || c ? [b] : [k, b]].join("\n");
     d = K(d);
@@ -43,7 +43,7 @@ function L(a, b, c = !1) {
 }
 ;function M(a) {
   var {stack:b} = Error();
-  const c = F(arguments);
+  const c = C(arguments);
   b = B(b, a);
   return L(c, b, a);
 }
@@ -146,10 +146,17 @@ const V = (a = {}) => Object.keys(a).reduce((b, c) => {
   }
   return a;
 };
-const {version:X} = require("../package.json"), Y = z("aqt");
+let X;
+try {
+  const {version:a, name:b} = require("../package.json");
+  X = "@rqt/aqt" == b ? `@rqt/aqt/${a}` : `@rqt/aqt via ${b}/${a}`;
+} catch (a) {
+  X = "@aqt/rqt";
+}
+const Y = z("aqt");
 module.exports = async(a, b) => {
   b = void 0 === b ? {} : b;
-  const {data:c, type:f = "json", headers:d = {"User-Agent":`Mozilla/5.0 (Node.JS) aqt/${X}`}, compress:e = !0, binary:k = !1, justHeaders:l = !1, method:n, timeout:q} = b;
+  const {data:c, type:f = "json", headers:d = {"User-Agent":`Mozilla/5.0 (Node.JS) ${X}`}, compress:e = !0, binary:k = !1, justHeaders:l = !1, method:n, timeout:q} = b;
   b = M(!0);
   const {hostname:g, protocol:t, port:v, path:w} = N(a), h = "https:" === t ? u : y, p = {hostname:g, port:v, path:w, headers:Object.assign({}, d), timeout:q, method:n};
   if (c) {
@@ -171,9 +178,9 @@ module.exports = async(a, b) => {
     "Content-Length" in p.headers || (p.headers["Content-Length"] = Buffer.byteLength(r));
   }
   !e || "Accept-Encoding" in p.headers || (p.headers["Accept-Encoding"] = "gzip, deflate");
-  const {body:x, headers:Z, byteLength:C, statusCode:aa, statusMessage:ba, h:D, f:E} = await W(h, p, {data:r, justHeaders:l, binary:k, a:b});
-  Y("%s %s B%s", a, C, `${C != D ? ` (raw ${D} B)` : ""}`);
-  return {body:E ? E : x, headers:Z, statusCode:aa, statusMessage:ba};
+  const {body:x, headers:Z, byteLength:D, statusCode:aa, statusMessage:ba, h:E, f:F} = await W(h, p, {data:r, justHeaders:l, binary:k, a:b});
+  Y("%s %s B%s", a, D, `${D != E ? ` (raw ${E} B)` : ""}`);
+  return {body:F ? F : x, headers:Z, statusCode:aa, statusMessage:ba};
 };
 
 

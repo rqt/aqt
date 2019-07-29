@@ -5,8 +5,14 @@ import erotic from 'erotic'
 import { parse } from 'url'
 import { getData, exec } from './lib'
 
-// require in index won't lead to --process_common_js_modules
-const { 'version': version } = require('../package.json')
+let ua
+try {
+  // require in index won't lead to --process_common_js_modules
+  const { 'version': version, 'name': name } = require('../package.json')
+  ua = name == '@rqt/aqt' ? `@rqt/aqt/${version}` : `@rqt/aqt via ${name}/${version}`
+} catch (err) {
+  ua = '@aqt/rqt'
+}
 
 const LOG = debuglog('aqt')
 
@@ -20,7 +26,7 @@ const aqt = async (address, options = {}) => {
     data: d,
     type = 'json',
     headers: outgoingHeaders = {
-      'User-Agent': `Mozilla/5.0 (Node.JS) aqt/${version}`,
+      'User-Agent': `Mozilla/5.0 (Node.JS) ${ua}`,
     },
     compress = true,
     binary = false,
