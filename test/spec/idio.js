@@ -139,6 +139,18 @@ const T = {
     })
     equal(body, 'multipart/form-data; boundary=TEST 100')
   },
+  async 'works with just headers and json'({ start }) {
+    const url = await start({
+      test(ctx) {
+        ctx.body = { ok: '123' }
+      },
+    })
+    const { body, statusCode } = await aqt(url, {
+      justHeaders: true,
+    })
+    equal(body, undefined)
+    equal(statusCode, 200)
+  },
 }
 
 export default T
