@@ -118,6 +118,10 @@ Makes a request to the URL, either with or without options.
  </tr>
 </table>
 
+<table>
+<tr><th><a href="example/index.js">Source</a></th><th>Output</th></tr>
+<tr><td>
+
 ```js
 import aqt from '@rqt/aqt'
 
@@ -127,6 +131,9 @@ const Request = async (url) => {
   console.log(resp)
 }
 ```
+</td>
+<td>
+
 ```json5
 {
   "body": "Hello World",
@@ -140,6 +147,8 @@ const Request = async (url) => {
   "statusMessage": "OK"
 }
 ```
+</td></tr>
+</table>
 
 <p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/2.svg?sanitize=true"></a></p>
 
