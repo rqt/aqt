@@ -1,3 +1,9 @@
+## 29 July 2019
+
+### [1.3.0](https://github.com/rqt/aqt/compare/v1.2.6...v1.3.0)
+
+- [package] Compile package with [JavaScript Compiler](https://compiler.page).
+
 ## 3 July 2019
 
 ### [1.2.6](https://github.com/rqt/aqt/compare/v1.2.5...v1.2.6)
