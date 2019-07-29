@@ -13,7 +13,7 @@ yarn add @rqt/aqt
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
 - [`aqt(url: string, options?: AqtOptions): AqtReturn`](#aqturl-stringoptions-aqtoptions-aqtreturn)
-  * [`_rqt.AqtOptions`](#type-_rqtaqtoptions)
+  * [`AqtOptions`](#type-aqtoptions)
 - [`AqtReturn` Type](#aqtreturn-type)
   * [<code>body</code>](#body)
   * [<code>headers</code>](#headers)
@@ -37,7 +37,7 @@ import aqt from '@rqt/aqt'
 
 Makes a request to the URL, either with or without options.
 
-<strong><a name="type-_rqtaqtoptions">`_rqt.AqtOptions`</a></strong>: Configuration for requests.
+__<a name="type-aqtoptions">`AqtOptions`</a>__: Configuration for requests.
 <table>
  <thead><tr>
   <th>Name</th>
@@ -118,6 +118,8 @@ Makes a request to the URL, either with or without options.
  </tr>
 </table>
 
+_In the example below, a function is created to query data from a server._
+
 <table>
 <tr><th><a href="example/index.js">Source</a></th><th>Output</th></tr>
 <tr><td>
@@ -139,7 +141,7 @@ const Request = async (url) => {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Mon, 29 Jul 2019 16:28:05 GMT",
+    "date": "Mon, 29 Jul 2019 16:32:09 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
