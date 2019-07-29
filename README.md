@@ -117,6 +117,7 @@ Makes a request to the URL, either with or without options.
   <td>Whether to stop the request after response headers were received, without waiting for the data.</td>
  </tr>
 </table>
+
 ```js
 import aqt from '@rqt/aqt'
 
