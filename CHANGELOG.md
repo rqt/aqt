@@ -1,3 +1,10 @@
+## 8 January 2020
+
+### [1.4.0](https://github.com/rqt/aqt/compare/v1.3.0...v1.4.0)
+
+- [fix] Compile w/ destructured headers' names for Closure.
+- [doc] Add `typedefs.json` file.
+
 ## 29 July 2019
 
 ### [1.3.0](https://github.com/rqt/aqt/compare/v1.2.6...v1.3.0)
