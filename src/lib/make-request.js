@@ -10,7 +10,7 @@ export const isMessageGzip = (res) => {
   /**
    * @suppress {checkTypes}
    */
-  const { 'content-encoding': contentEncoding } = res.headers
+  const contentEncoding = res.headers['content-encoding']
   return contentEncoding == 'gzip'
 }
 

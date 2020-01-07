@@ -57,15 +57,15 @@ const O = (a, b) => {
 };
 class P extends N {
   constructor(a) {
-    const {binary:b = !1, rs:c = null, ...f} = a || {}, {b:d = L(!0), proxyError:e} = a || {}, k = (l, m) => d(m);
+    const {binary:b = !1, rs:c = null, ...f} = a || {}, {a:d = L(!0), proxyError:e} = a || {}, k = (l, m) => d(m);
     super(f);
-    this.a = [];
+    this.b = [];
     this.g = new Promise((l, m) => {
       this.on("finish", () => {
         let g;
-        b ? g = Buffer.concat(this.a) : g = this.a.join("");
+        b ? g = Buffer.concat(this.b) : g = this.b.join("");
         l(g);
-        this.a = [];
+        this.b = [];
       });
       this.once("error", g => {
         if (-1 == g.stack.indexOf("\n")) {
@@ -81,7 +81,7 @@ class P extends N {
     });
   }
   _write(a, b, c) {
-    this.a.push(a);
+    this.b.push(a);
     c();
   }
   get c() {
@@ -89,12 +89,12 @@ class P extends N {
   }
 }
 const Q = async(a, b = {}) => {
-  ({c:a} = new P({rs:a, ...b, b:L(!0)}));
+  ({c:a} = new P({rs:a, ...b, a:L(!0)}));
   return await a;
 };
 const R = zlib.createGunzip;
 const S = (a, b, c = {}) => {
-  const {justHeaders:f, binary:d, b:e = L(!0)} = c;
+  const {justHeaders:f, binary:d, a:e = L(!0)} = c;
   let k, l, m, g, r = 0, u = 0;
   c = (new Promise((v, w) => {
     k = a(b, async h => {
@@ -103,7 +103,7 @@ const S = (a, b, c = {}) => {
       if (f) {
         h.destroy();
       } else {
-        var n = "gzip" == h.headers.a;
+        var n = "gzip" == h.headers["content-encoding"];
         h.on("data", q => r += q.byteLength);
         h = n ? h.pipe(R()) : h;
         g = await Q(h, {binary:d});
@@ -123,12 +123,11 @@ const T = (a = {}) => Object.keys(a).reduce((b, c) => {
   const f = a[c];
   c = `${encodeURIComponent(c)}=${encodeURIComponent(f)}`;
   return [...b, c];
-}, []).join("&").replace(/%20/g, "+"), U = async(a, b, {data:c, justHeaders:f, binary:d, b:e = L(!0)}) => {
-  const {i:k, c:l} = S(a, b, {justHeaders:f, binary:d, b:e});
+}, []).join("&").replace(/%20/g, "+"), U = async(a, b, {data:c, justHeaders:f, binary:d, a:e = L(!0)}) => {
+  const {i:k, c:l} = S(a, b, {justHeaders:f, binary:d, a:e});
   k.end(c);
   a = await l;
-  ({"content-type":b = ""} = a.headers);
-  if ((b = b.startsWith("application/json")) && a.body) {
+  if ((a.headers["content-type"] || "").startsWith("application/json") && a.body) {
     try {
       a.f = JSON.parse(a.body);
     } catch (m) {
@@ -168,7 +167,7 @@ module.exports = async(a, b = {}) => {
     "Content-Length" in n.headers || (n.headers["Content-Length"] = Buffer.byteLength(q));
   }
   !e || "Accept-Encoding" in n.headers || (n.headers["Accept-Encoding"] = "gzip, deflate");
-  const {body:X, headers:Y, byteLength:C, statusCode:Z, statusMessage:aa, h:D, f:E} = await U(h, n, {data:q, justHeaders:l, binary:k, b});
+  const {body:X, headers:Y, byteLength:C, statusCode:Z, statusMessage:aa, h:D, f:E} = await U(h, n, {data:q, justHeaders:l, binary:k, a:b});
   W("%s %s B%s", a, C, `${C != D ? ` (raw ${D} B)` : ""}`);
   return {body:E ? E : X, headers:Y, statusCode:Z, statusMessage:aa};
 };

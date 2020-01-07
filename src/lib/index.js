@@ -63,7 +63,7 @@ const isHeadersJson = (headers) => {
   /**
    * @suppress {checkTypes}
    */
-  const { 'content-type': contentType = '' } = headers
+  const contentType = headers['content-type'] || ''
   return contentType.startsWith('application/json')
 }
 
