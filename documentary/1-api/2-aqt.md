@@ -1,13 +1,8 @@
-```## aqt => AqtReturn
-[
-  ["url", "string"],
-  ["options?", "AqtOptions"]
-]
-```
+<typedef name="aqt">types/api.xml</typedef>
 
 Makes a request to the URL, either with or without options.
 
-<typedef narrow flatten>types/index.xml</typedef>
+<typedef narrow>types/index.xml</typedef>
 
 <!-- The requests are made with the `aqt` function, which accepts either a single URL, or a URL with a configuration object of the ][`AConfig` type](#aconfig-type). -->
 

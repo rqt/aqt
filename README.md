@@ -1,18 +1,20 @@
 # @rqt/aqt
 
-[![npm version](https://badge.fury.io/js/%40rqt%2Faqt.svg)](https://npmjs.org/package/@rqt/aqt)
+[![npm version](https://badge.fury.io/js/%40rqt%2Faqt.svg)](https://www.npmjs.com/package/@rqt/aqt)
 
 `aqt` is a network request package for Node.JS that returns the body (parsed if returned as _JSON_), headers and status after _gzip_ decompression when necessary.
 
 ```console
+rqt:~$ \
 yarn add @rqt/aqt
+npm install @rqt/aqt
 ```
 
 ## Table Of Contents
 
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
-- [`aqt(url: string, options?: AqtOptions): AqtReturn`](#aqturl-stringoptions-aqtoptions-aqtreturn)
+- [`async aqt(address: string, options=: !AqtOptions): !AqtReturn`](#async-aqtaddress-stringoptions-aqtoptions-aqtreturn)
   * [`AqtOptions`](#type-aqtoptions)
 - [`AqtReturn` Type](#aqtreturn-type)
   * [<code>body</code>](#body)
@@ -21,7 +23,9 @@ yarn add @rqt/aqt
   * [<code>statusMessage</code>](#statusmessage)
 - [Copyright](#copyright)
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/0.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/0.svg?sanitize=true">
+</a></p>
 
 ## API
 
@@ -31,9 +35,15 @@ The package exports the main default asynchronous function to make requests.
 import aqt from '@rqt/aqt'
 ```
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/1.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/1.svg?sanitize=true">
+</a></p>
 
-## `aqt(`<br/>&nbsp;&nbsp;`url: string,`<br/>&nbsp;&nbsp;`options?: AqtOptions,`<br/>`): AqtReturn`
+## <code>async <ins>aqt</ins>(</code><sub><br/>&nbsp;&nbsp;`address: string,`<br/>&nbsp;&nbsp;`options=: !AqtOptions,`<br/></sub><code>): <i>!AqtReturn</i></code>
+Request a web page and return information including `headers`, `statusCode`, `statusMessage` along with the `body` (which is also parsed if JSON received).
+
+ - <kbd><strong>address*</strong></kbd> <em>`string`</em>: The URL to request data from.
+ - <kbd>options</kbd> <em><code><a href="#type-aqtoptions" title="Configuration for requests.">!AqtOptions</a></code></em> (optional): The options for the request.
 
 Makes a request to the URL, either with or without options.
 
@@ -51,7 +61,9 @@ __<a name="type-aqtoptions">`AqtOptions`</a>__: Configuration for requests.
  </tr>
  <tr></tr>
  <tr>
-  <td>Optional data to send to the server with the request.</td>
+  <td>
+   Optional data to send to the server with the request.
+  </td>
  </tr>
  <tr>
   <td rowSpan="3" align="center">type</td>
@@ -60,16 +72,20 @@ __<a name="type-aqtoptions">`AqtOptions`</a>__: Configuration for requests.
  </tr>
  <tr></tr>
  <tr>
-  <td>How to send data: <code>json</code> to serialise JSON data and add <em>Content-Type: application/json</em> header, and <code>form</code> for url-encoded transmission with <em>Content-Type: application/x-www-form-urlencoded</em>. <em>Multipart/form-data</em> must be implemented manually.</td>
+  <td>
+   How to send data: <code>json</code> to serialise JSON data and add <em>Content-Type: application/json</em> header, and <code>form</code> for url-encoded transmission with <em>Content-Type: application/x-www-form-urlencoded</em>. <em>Multipart/form-data</em> must be implemented manually.
+  </td>
  </tr>
  <tr>
   <td rowSpan="3" align="center">headers</td>
-  <td><em><a href="https://nodejs.org/api/http.html#http_class_http_outgoinghttpheaders" title="The headers hash map for making requests, including such properties as Content-Encoding, Content-Type, etc.">!http.OutgoingHttpHeaders</a></em></td>
+  <td><em><a href="https://nodejs.org/api/http.html" title="The headers hash map for making requests, including such properties as Content-Encoding, Content-Type, etc."><img src=".documentary/type-icons/node-odd.png" alt="Node.JS Docs">!http.OutgoingHttpHeaders</a></em></td>
   <td rowSpan="3">-</td>
  </tr>
  <tr></tr>
  <tr>
-  <td>Headers to use for the request. By default, a single User-Agent header with <em>Mozilla/5.0 (Node.JS) aqt/{version}</em> value is set.</td>
+  <td>
+   Headers to use for the request. By default, a single User-Agent header with <em>Mozilla/5.0 (Node.JS) aqt/{version}</em> value is set.
+  </td>
  </tr>
  <tr>
   <td rowSpan="3" align="center">compress</td>
@@ -78,7 +94,9 @@ __<a name="type-aqtoptions">`AqtOptions`</a>__: Configuration for requests.
  </tr>
  <tr></tr>
  <tr>
-  <td>Add the <code>Accept-Encoding: gzip, deflate</code> header to indicate to the server that it can send a compressed response.</td>
+  <td>
+   Add the <code>Accept-Encoding: gzip, deflate</code> header to indicate to the server that it can send a compressed response.
+  </td>
  </tr>
  <tr>
   <td rowSpan="3" align="center">timeout</td>
@@ -87,7 +105,9 @@ __<a name="type-aqtoptions">`AqtOptions`</a>__: Configuration for requests.
  </tr>
  <tr></tr>
  <tr>
-  <td>The timeout after which the request should fail.</td>
+  <td>
+   The timeout after which the request should fail.
+  </td>
  </tr>
  <tr>
   <td rowSpan="3" align="center">method</td>
@@ -96,7 +116,9 @@ __<a name="type-aqtoptions">`AqtOptions`</a>__: Configuration for requests.
  </tr>
  <tr></tr>
  <tr>
-  <td>What HTTP method to use in making of the request. When no method is given and <code>data</code> is present, defaults to <code>POST</code>.</td>
+  <td>
+   What HTTP method to use in making of the request. When no method is given and <code>data</code> is present, defaults to <code>POST</code>.
+  </td>
  </tr>
  <tr>
   <td rowSpan="3" align="center">binary</td>
@@ -105,7 +127,9 @@ __<a name="type-aqtoptions">`AqtOptions`</a>__: Configuration for requests.
  </tr>
  <tr></tr>
  <tr>
-  <td>Whether to return a buffer instead of a string.</td>
+  <td>
+   Whether to return a buffer instead of a string.
+  </td>
  </tr>
  <tr>
   <td rowSpan="3" align="center">justHeaders</td>
@@ -114,7 +138,9 @@ __<a name="type-aqtoptions">`AqtOptions`</a>__: Configuration for requests.
  </tr>
  <tr></tr>
  <tr>
-  <td>Whether to stop the request after response headers were received, without waiting for the data.</td>
+  <td>
+   Whether to stop the request after response headers were received, without waiting for the data.
+  </td>
  </tr>
 </table>
 
@@ -141,7 +167,7 @@ const Request = async (url) => {
   "body": "Hello World",
   "headers": {
     "content-type": "text/plain",
-    "date": "Mon, 29 Jul 2019 16:34:16 GMT",
+    "date": "Tue, 07 Jan 2020 22:25:31 GMT",
     "connection": "close",
     "transfer-encoding": "chunked"
   },
@@ -152,7 +178,9 @@ const Request = async (url) => {
 </td></tr>
 </table>
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/2.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/2.svg?sanitize=true">
+</a></p>
 
 ## `AqtReturn` Type
 
@@ -228,7 +256,9 @@ The result of the `aqt` function will have the following structure:
 </table>
 
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/3.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/3.svg?sanitize=true">
+</a></p>
 
 ## Copyright
 
@@ -240,7 +270,7 @@ The result of the `aqt` function will have the following structure:
           alt="Art Deco">
       </a>
     </th>
-    <th>© <a href="https://artd.eco">Art Deco</a> for <a href="http://rqt.biz">Rqt</a> 2019</th>
+    <th>© <a href="https://artd.eco">Art Deco</a> for <a href="http://rqt.biz">Rqt</a> 2020</th>
     <th>
       <a href="https://www.technation.sucks" title="Tech Nation Visa">
         <img width="100" src="https://raw.githubusercontent.com/idiocc/cookies/master/wiki/arch4.jpg"
@@ -251,4 +281,6 @@ The result of the `aqt` function will have the following structure:
   </tr>
 </table>
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/-1.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/-1.svg?sanitize=true">
+</a></p>

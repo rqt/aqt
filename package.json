@@ -9,7 +9,7 @@
     "test": "yarn t test/spec",
     "test-compile": "ALAMODE_ENV=test-compile yarn test",
     "compile": "depack src/depack -o compile/aqt.js -c -a -p -s --source_map_include_content",
-    "doc": "NODE_DEBUG=doc doc -o README.md -n _rqt",
+    "doc": "NODE_DEBUG=doc doc -o README.md -n _rqt -a",
     "d": "yarn-s template d1 externs",
     "d1": "typal compile/index.js -u",
     "template": "typal compile/template.js -T compile/index.js -t types",
@@ -28,6 +28,7 @@
     "type": "git",
     "url": "git://github.com/rqt/aqt.git"
   },
+  "typedefs": "typedefs.json",
   "keywords": [
     "request",
     "network",

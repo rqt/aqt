@@ -1,0 +1,10 @@
+{
+  "_rqt.aqt": {
+    "link": "https://github.com/rqt/aqt#async-aqtaddress-stringoptions-aqtoptions-aqtreturn",
+    "description": "Request a web page and return information including `headers`, `statusCode`, `statusMessage` along with the `body` (which is also parsed if JSON received)."
+  },
+  "_rqt.AqtOptions": {
+    "link": "https://github.com/rqt/aqt#type-aqtoptions",
+    "description": "Configuration for requests."
+  }
+}
