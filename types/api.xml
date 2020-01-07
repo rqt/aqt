@@ -1,0 +1,7 @@
+<types namespace="_rqt">
+  <method name="aqt" async return="!_rqt.AqtReturn">
+    <arg string name="address">The URL to request data from.</arg>
+    <arg type="!_rqt.AqtOptions" name="options" opt>The options for the request.</arg>
+    Request a web page and return information including `headers`, `statusCode`, `statusMessage` along with the `body` (which is also parsed if JSON received).
+  </method>
+</types>

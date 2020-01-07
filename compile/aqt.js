@@ -7,116 +7,107 @@ const url = require('url');
 const os = require('os');
 const zlib = require('zlib');
 const stream = require('stream');             
-const {request:u} = https;
-const {request:y} = http;
-const {debuglog:z} = util;
-const A = (a, b = 0, c = !1) => {
+const t = https.request;
+const x = http.request;
+const y = util.debuglog;
+const z = (a, b = 0, c = !1) => {
   if (0 === b && !c) {
     return a;
   }
   a = a.split("\n", c ? b + 1 : void 0);
   return c ? a[a.length - 1] : a.slice(b).join("\n");
-}, B = (a, b = !1) => A(a, 2 + (b ? 1 : 0)), C = a => {
+}, A = (a, b = !1) => z(a, 2 + (b ? 1 : 0)), B = a => {
   ({callee:{caller:a}} = a);
   return a;
 };
-const {homedir:G} = os;
-const H = /\s+at.*(?:\(|\s)(.*)\)?/, I = /^(?:(?:(?:node|(?:internal\/[\w/]*|.*node_modules\/(?:IGNORED_MODULES)\/.*)?\w+)\.js:\d+:\d+)|native)/, J = G(), K = a => {
-  const {pretty:b = !1, ignoredModules:c = ["pirates"]} = {}, f = new RegExp(I.source.replace("IGNORED_MODULES", c.join("|")));
+const F = os.homedir;
+const G = /\s+at.*(?:\(|\s)(.*)\)?/, H = /^(?:(?:(?:node|(?:internal\/[\w/]*|.*node_modules\/(?:IGNORED_MODULES)\/.*)?\w+)\.js:\d+:\d+)|native)/, I = F(), J = a => {
+  const {pretty:b = !1, ignoredModules:c = ["pirates"]} = {}, f = new RegExp(H.source.replace("IGNORED_MODULES", c.join("|")));
   return a.replace(/\\/g, "/").split("\n").filter(d => {
-    d = d.match(H);
+    d = d.match(G);
     if (null === d || !d[1]) {
       return !0;
     }
     d = d[1];
     return d.includes(".app/Contents/Resources/electron.asar") || d.includes(".app/Contents/Resources/default_app.asar") ? !1 : !f.test(d);
-  }).filter(d => d.trim()).map(d => b ? d.replace(H, (e, k) => e.replace(k, k.replace(J, "~"))) : d).join("\n");
+  }).filter(d => d.trim()).map(d => b ? d.replace(G, (e, k) => e.replace(k, k.replace(I, "~"))) : d).join("\n");
 };
-function L(a, b, c = !1) {
+function K(a, b, c = !1) {
   return function(f) {
-    var d = C(arguments), {stack:e} = Error();
-    const k = A(e, 2, !0), l = (e = f instanceof Error) ? f.message : f;
+    var d = B(arguments), {stack:e} = Error();
+    const k = z(e, 2, !0), l = (e = f instanceof Error) ? f.message : f;
     d = [`Error: ${l}`, ...null !== d && a === d || c ? [b] : [k, b]].join("\n");
-    d = K(d);
+    d = J(d);
     return Object.assign(e ? f : Error(), {message:l, stack:d});
   };
 }
-;function M(a) {
+;function L(a) {
   var {stack:b} = Error();
-  const c = C(arguments);
-  b = B(b, a);
-  return L(c, b, a);
+  const c = B(arguments);
+  b = A(b, a);
+  return K(c, b, a);
 }
-;const {parse:N} = url;
-const {Writable:O} = stream;
-const P = (a, b) => {
+;const M = url.parse;
+const N = stream.Writable;
+const O = (a, b) => {
   b.once("error", c => {
     a.emit("error", c);
   });
   return b;
 };
-class Q extends O {
+class P extends N {
   constructor(a) {
-    var b = a || {}, c = Object.assign({}, b);
-    const f = void 0 === b.binary ? !1 : b.binary, d = void 0 === b.rs ? null : b.rs;
-    b = (delete c.binary, delete c.rs, c);
-    const {a:e = M(!0), proxyError:k} = a || {}, l = (n, q) => e(q);
-    super(b);
-    this.b = [];
-    this.g = new Promise((n, q) => {
+    const {binary:b = !1, rs:c = null, ...f} = a || {}, {b:d = L(!0), proxyError:e} = a || {}, k = (l, m) => d(m);
+    super(f);
+    this.a = [];
+    this.g = new Promise((l, m) => {
       this.on("finish", () => {
         let g;
-        f ? g = Buffer.concat(this.b) : g = this.b.join("");
-        n(g);
-        this.b = [];
+        b ? g = Buffer.concat(this.a) : g = this.a.join("");
+        l(g);
+        this.a = [];
       });
       this.once("error", g => {
         if (-1 == g.stack.indexOf("\n")) {
-          l`${g}`;
+          k`${g}`;
         } else {
-          const t = K(g.stack);
-          g.stack = t;
-          k && l`${g}`;
+          const r = J(g.stack);
+          g.stack = r;
+          e && k`${g}`;
         }
-        q(g);
+        m(g);
       });
-      d && P(this, d).pipe(this);
+      c && O(this, c).pipe(this);
     });
   }
   _write(a, b, c) {
-    this.b.push(a);
+    this.a.push(a);
     c();
   }
   get c() {
     return this.g;
   }
 }
-const R = async(a, b) => {
-  b = void 0 === b ? {} : b;
-  ({c:a} = new Q(Object.assign({}, {rs:a}, b, {a:M(!0)})));
+const Q = async(a, b = {}) => {
+  ({c:a} = new P({rs:a, ...b, b:L(!0)}));
   return await a;
 };
-const {createGunzip:S} = zlib;
-const T = a => {
-  ({"content-encoding":a} = a.headers);
-  return "gzip" == a;
-}, U = (a, b, c) => {
-  c = void 0 === c ? {} : c;
-  const {justHeaders:f, binary:d, a:e = M(!0)} = c;
-  let k, l, n, q, g = 0, t = 0;
+const R = zlib.createGunzip;
+const S = (a, b, c = {}) => {
+  const {justHeaders:f, binary:d, b:e = L(!0)} = c;
+  let k, l, m, g, r = 0, u = 0;
   c = (new Promise((v, w) => {
     k = a(b, async h => {
       ({headers:l} = h);
-      const {statusMessage:p, statusCode:r} = h;
-      n = {statusMessage:p, statusCode:r};
+      m = {statusMessage:h.statusMessage, statusCode:h.statusCode};
       if (f) {
         h.destroy();
       } else {
-        var m = T(h);
-        h.on("data", x => g += x.byteLength);
-        h = m ? h.pipe(S()) : h;
-        q = await R(h, {binary:d});
-        t = q.length;
+        var n = "gzip" == h.headers.a;
+        h.on("data", q => r += q.byteLength);
+        h = n ? h.pipe(R()) : h;
+        g = await Q(h, {binary:d});
+        u = g.length;
       }
       v();
     }).on("error", h => {
@@ -125,62 +116,61 @@ const T = a => {
     }).on("timeout", () => {
       k.abort();
     });
-  })).then(() => Object.assign({}, {body:q, headers:l}, n, {h:g, byteLength:t, f:null}));
+  })).then(() => ({body:g, headers:l, ...m, h:r, byteLength:u, f:null}));
   return {i:k, c};
 };
-const V = (a = {}) => Object.keys(a).reduce((b, c) => {
+const T = (a = {}) => Object.keys(a).reduce((b, c) => {
   const f = a[c];
   c = `${encodeURIComponent(c)}=${encodeURIComponent(f)}`;
   return [...b, c];
-}, []).join("&").replace(/%20/g, "+"), W = async(a, b, {data:c, justHeaders:f, binary:d, a:e = M(!0)}) => {
-  const {i:k, c:l} = U(a, b, {justHeaders:f, binary:d, a:e});
+}, []).join("&").replace(/%20/g, "+"), U = async(a, b, {data:c, justHeaders:f, binary:d, b:e = L(!0)}) => {
+  const {i:k, c:l} = S(a, b, {justHeaders:f, binary:d, b:e});
   k.end(c);
   a = await l;
   ({"content-type":b = ""} = a.headers);
   if ((b = b.startsWith("application/json")) && a.body) {
     try {
       a.f = JSON.parse(a.body);
-    } catch (n) {
-      throw e = e(n), e.response = a.body, e;
+    } catch (m) {
+      throw e = e(m), e.response = a.body, e;
     }
   }
   return a;
 };
-let X;
+let V;
 try {
   const {version:a, name:b} = require("../package.json");
-  X = "@rqt/aqt" == b ? `@rqt/aqt/${a}` : `@rqt/aqt via ${b}/${a}`;
+  V = "@rqt/aqt" == b ? `@rqt/aqt/${a}` : `@rqt/aqt via ${b}/${a}`;
 } catch (a) {
-  X = "@aqt/rqt";
+  V = "@aqt/rqt";
 }
-const Y = z("aqt");
-module.exports = async(a, b) => {
-  b = void 0 === b ? {} : b;
-  const {data:c, type:f = "json", headers:d = {"User-Agent":`Mozilla/5.0 (Node.JS) ${X}`}, compress:e = !0, binary:k = !1, justHeaders:l = !1, method:n, timeout:q} = b;
-  b = M(!0);
-  const {hostname:g, protocol:t, port:v, path:w} = N(a), h = "https:" === t ? u : y, p = {hostname:g, port:v, path:w, headers:Object.assign({}, d), timeout:q, method:n};
+const W = y("aqt");
+module.exports = async(a, b = {}) => {
+  const {data:c, type:f = "json", headers:d = {"User-Agent":`Mozilla/5.0 (Node.JS) ${V}`}, compress:e = !0, binary:k = !1, justHeaders:l = !1, method:m, timeout:g} = b;
+  b = L(!0);
+  const {hostname:r, protocol:u, port:v, path:w} = M(a), h = "https:" === u ? t : x, n = {hostname:r, port:v, path:w, headers:{...d}, timeout:g, method:m};
   if (c) {
-    var r = f;
-    var m = c;
-    switch(r) {
+    var q = f;
+    var p = c;
+    switch(q) {
       case "json":
-        m = JSON.stringify(m);
-        r = "application/json";
+        p = JSON.stringify(p);
+        q = "application/json";
         break;
       case "form":
-        m = V(m), r = "application/x-www-form-urlencoded";
+        p = T(p), q = "application/x-www-form-urlencoded";
     }
-    m = {data:m, contentType:r};
-    ({data:r} = m);
-    ({contentType:m} = m);
-    p.method = n || "POST";
-    "Content-Type" in p.headers || (p.headers["Content-Type"] = m);
-    "Content-Length" in p.headers || (p.headers["Content-Length"] = Buffer.byteLength(r));
+    p = {data:p, contentType:q};
+    ({data:q} = p);
+    p = p.contentType;
+    n.method = m || "POST";
+    "Content-Type" in n.headers || (n.headers["Content-Type"] = p);
+    "Content-Length" in n.headers || (n.headers["Content-Length"] = Buffer.byteLength(q));
   }
-  !e || "Accept-Encoding" in p.headers || (p.headers["Accept-Encoding"] = "gzip, deflate");
-  const {body:x, headers:Z, byteLength:D, statusCode:aa, statusMessage:ba, h:E, f:F} = await W(h, p, {data:r, justHeaders:l, binary:k, a:b});
-  Y("%s %s B%s", a, D, `${D != E ? ` (raw ${E} B)` : ""}`);
-  return {body:F ? F : x, headers:Z, statusCode:aa, statusMessage:ba};
+  !e || "Accept-Encoding" in n.headers || (n.headers["Accept-Encoding"] = "gzip, deflate");
+  const {body:X, headers:Y, byteLength:C, statusCode:Z, statusMessage:aa, h:D, f:E} = await U(h, n, {data:q, justHeaders:l, binary:k, b});
+  W("%s %s B%s", a, C, `${C != D ? ` (raw ${D} B)` : ""}`);
+  return {body:E ? E : X, headers:Y, statusCode:Z, statusMessage:aa};
 };
 
 
